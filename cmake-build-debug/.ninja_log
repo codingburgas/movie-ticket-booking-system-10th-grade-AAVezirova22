@@ -1,0 +1,9 @@
+# ninja log v6
+2	429	1741613304362187879	CMakeFiles/BookingSystem.dir/presentationLayer/menu.cpp.o	c387f804c16c722
+1	121	1741613304361133512	CMakeFiles/BookingSystem.dir/businessLogicLayer/app.cpp.o	d0213b43d7557acd
+2	121	1741613304362047755	CMakeFiles/BookingSystem.dir/dataAccessLayer/dataHandler.cpp.o	328760c85927bc95
+2	60	1741614266178767629	build.ninja	f8fc7fc666f96547
+1	6	1741614266188221832	clean	ad90e366ad70d77b
+6	116	1741614269517033159	CMakeFiles/BookingSystem.dir/dataAccessLayer/dataHandler.cpp.o	328760c85927bc95
+7	127	1741614269517383284	CMakeFiles/BookingSystem.dir/src/main.cpp.o	b5798e8f10e535ed
+7	396	1741614269517202784	CMakeFiles/BookingSystem.dir/presentationLayer/menu.cpp.o	c387f804c16c722
