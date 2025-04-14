@@ -49,26 +49,19 @@ cmake_ninja_workdir = /Users/ani/Documents/School/BookingSystem/cmake-build-debu
 
 build cmake_object_order_depends_target_BookingSystem: phony || .
 
-build CMakeFiles/BookingSystem.dir/businessLogicLayer/app.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/businessLogicLayer/app.cpp || cmake_object_order_depends_target_BookingSystem
-  DEP_FILE = CMakeFiles/BookingSystem.dir/businessLogicLayer/app.cpp.o.d
+build CMakeFiles/BookingSystem.dir/src/app.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/src/app.cpp || cmake_object_order_depends_target_BookingSystem
+  DEP_FILE = CMakeFiles/BookingSystem.dir/src/app.cpp.o.d
   FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
   INCLUDES = -I/Users/ani/Documents/School/BookingSystem/businessLogicLayer -I/Users/ani/Documents/School/BookingSystem/dataAccessLayer
   OBJECT_DIR = CMakeFiles/BookingSystem.dir
-  OBJECT_FILE_DIR = CMakeFiles/BookingSystem.dir/businessLogicLayer
+  OBJECT_FILE_DIR = CMakeFiles/BookingSystem.dir/src
 
-build CMakeFiles/BookingSystem.dir/dataAccessLayer/dataHandler.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/dataAccessLayer/dataHandler.cpp || cmake_object_order_depends_target_BookingSystem
-  DEP_FILE = CMakeFiles/BookingSystem.dir/dataAccessLayer/dataHandler.cpp.o.d
+build CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/src/mainMenu.cpp || cmake_object_order_depends_target_BookingSystem
+  DEP_FILE = CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o.d
   FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
   INCLUDES = -I/Users/ani/Documents/School/BookingSystem/businessLogicLayer -I/Users/ani/Documents/School/BookingSystem/dataAccessLayer
   OBJECT_DIR = CMakeFiles/BookingSystem.dir
-  OBJECT_FILE_DIR = CMakeFiles/BookingSystem.dir/dataAccessLayer
-
-build CMakeFiles/BookingSystem.dir/presentationLayer/menu.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/presentationLayer/menu.cpp || cmake_object_order_depends_target_BookingSystem
-  DEP_FILE = CMakeFiles/BookingSystem.dir/presentationLayer/menu.cpp.o.d
-  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
-  INCLUDES = -I/Users/ani/Documents/School/BookingSystem/businessLogicLayer -I/Users/ani/Documents/School/BookingSystem/dataAccessLayer
-  OBJECT_DIR = CMakeFiles/BookingSystem.dir
-  OBJECT_FILE_DIR = CMakeFiles/BookingSystem.dir/presentationLayer
+  OBJECT_FILE_DIR = CMakeFiles/BookingSystem.dir/src
 
 build CMakeFiles/BookingSystem.dir/src/main.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/src/main.cpp || cmake_object_order_depends_target_BookingSystem
   DEP_FILE = CMakeFiles/BookingSystem.dir/src/main.cpp.o.d
@@ -85,7 +78,7 @@ build CMakeFiles/BookingSystem.dir/src/main.cpp.o: CXX_COMPILER__BookingSystem_u
 #############################################
 # Link the executable BookingSystem
 
-build BookingSystem: CXX_EXECUTABLE_LINKER__BookingSystem_Debug CMakeFiles/BookingSystem.dir/businessLogicLayer/app.cpp.o CMakeFiles/BookingSystem.dir/dataAccessLayer/dataHandler.cpp.o CMakeFiles/BookingSystem.dir/presentationLayer/menu.cpp.o CMakeFiles/BookingSystem.dir/src/main.cpp.o
+build BookingSystem: CXX_EXECUTABLE_LINKER__BookingSystem_Debug CMakeFiles/BookingSystem.dir/src/app.cpp.o CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o CMakeFiles/BookingSystem.dir/src/main.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk
   OBJECT_DIR = CMakeFiles/BookingSystem.dir
   POST_BUILD = :

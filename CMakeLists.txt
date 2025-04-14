@@ -7,10 +7,8 @@ include_directories(businessLogicLayer)
 include_directories(dataAccessLayer)
 
 add_executable(BookingSystem
-    businessLogicLayer/app.cpp
-    businessLogicLayer/app.h
-    dataAccessLayer/dataHandler.cpp
-    dataAccessLayer/dataHandler.h
-    presentationLayer/menu.cpp
-    presentationLayer/menu.h
+        src/app.cpp
+        include/app.h
+        src/mainMenu.cpp
+        include/mainMenu.h
         src/main.cpp)
