@@ -1,16 +1,16 @@
 # ninja log v6
 7	396	1741614269517202784	CMakeFiles/BookingSystem.dir/presentationLayer/menu.cpp.o	c387f804c16c722
 2	105	1744631087817282381	CMakeFiles/BookingSystem.dir/src/main.cpp.o	b5798e8f10e535ed
-2	60	1744631739372784720	build.ninja	f8fc7fc666f96547
-223	256	1744631571837755097	BookingSystem	26ad1685e61209b8
-4	32	1744631571618858249	CMakeFiles/BookingSystem.dir/src/app.cpp.o	5e9857a1d401ef4b
+2	60	1745843520183459599	build.ninja	f8fc7fc666f96547
+245	274	1745843427131793914	BookingSystem	e8fc3ac11744c584
+4	160	1745843313736452700	CMakeFiles/BookingSystem.dir/src/app.cpp.o	5e9857a1d401ef4b
 6	116	1741614269517033159	CMakeFiles/BookingSystem.dir/dataAccessLayer/dataHandler.cpp.o	328760c85927bc95
 1	6	1741614266188221832	clean	ad90e366ad70d77b
 4	223	1744631571619131706	CMakeFiles/BookingSystem.dir/src/menu.cpp.o	8d7721ebad6de759
-1	268	1744632698561613501	CMakeFiles/BookingSystem.dir/src/app.cpp.o	5e9857a1d401ef4b
-1	339	1744632698561864666	CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o	85a8480cfb93a4b1
-3	151	1744632836302659045	CMakeFiles/BookingSystem.dir/src/app.cpp.o	5e9857a1d401ef4b
-3	224	1744632836303044084	CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o	85a8480cfb93a4b1
-3	149	1744632856801382441	CMakeFiles/BookingSystem.dir/src/app.cpp.o	5e9857a1d401ef4b
-4	221	1744632916522896448	CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o	85a8480cfb93a4b1
-221	251	1744632916740638637	BookingSystem	e8fc3ac11744c584
+4	245	1745843426890752309	CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o	85a8480cfb93a4b1
+6	34	1745843702934909487	CMakeFiles/BookingSystem.dir/src/login.cpp.o	2ba708bc1efc4107
+7	35	1745843702935426235	CMakeFiles/BookingSystem.dir/src/register.cpp.o	c75e1470a1d35950
+6	41	1745843702935191944	CMakeFiles/BookingSystem.dir/src/main.cpp.o	9111a45c2b9d2194
+6	213	1745843702934319240	CMakeFiles/BookingSystem.dir/src/app.cpp.o	ab7540f27dc82444
+5	306	1745843718524719625	CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o	b1c60652f13be3fe
+306	336	1745843718824506919	BookingSystem	b2bb6326b7cdf34c

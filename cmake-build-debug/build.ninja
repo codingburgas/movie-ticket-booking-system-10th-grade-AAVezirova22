@@ -52,21 +52,30 @@ build cmake_object_order_depends_target_BookingSystem: phony || .
 build CMakeFiles/BookingSystem.dir/src/app.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/src/app.cpp || cmake_object_order_depends_target_BookingSystem
   DEP_FILE = CMakeFiles/BookingSystem.dir/src/app.cpp.o.d
   FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
-  INCLUDES = -I/Users/ani/Documents/School/BookingSystem/businessLogicLayer -I/Users/ani/Documents/School/BookingSystem/dataAccessLayer
   OBJECT_DIR = CMakeFiles/BookingSystem.dir
   OBJECT_FILE_DIR = CMakeFiles/BookingSystem.dir/src
 
-build CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/src/mainMenu.cpp || cmake_object_order_depends_target_BookingSystem
-  DEP_FILE = CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o.d
+build CMakeFiles/BookingSystem.dir/src/login.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/src/login.cpp || cmake_object_order_depends_target_BookingSystem
+  DEP_FILE = CMakeFiles/BookingSystem.dir/src/login.cpp.o.d
   FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
-  INCLUDES = -I/Users/ani/Documents/School/BookingSystem/businessLogicLayer -I/Users/ani/Documents/School/BookingSystem/dataAccessLayer
   OBJECT_DIR = CMakeFiles/BookingSystem.dir
   OBJECT_FILE_DIR = CMakeFiles/BookingSystem.dir/src
 
 build CMakeFiles/BookingSystem.dir/src/main.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/src/main.cpp || cmake_object_order_depends_target_BookingSystem
   DEP_FILE = CMakeFiles/BookingSystem.dir/src/main.cpp.o.d
   FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
-  INCLUDES = -I/Users/ani/Documents/School/BookingSystem/businessLogicLayer -I/Users/ani/Documents/School/BookingSystem/dataAccessLayer
+  OBJECT_DIR = CMakeFiles/BookingSystem.dir
+  OBJECT_FILE_DIR = CMakeFiles/BookingSystem.dir/src
+
+build CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/src/mainMenu.cpp || cmake_object_order_depends_target_BookingSystem
+  DEP_FILE = CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o.d
+  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/BookingSystem.dir
+  OBJECT_FILE_DIR = CMakeFiles/BookingSystem.dir/src
+
+build CMakeFiles/BookingSystem.dir/src/register.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/src/register.cpp || cmake_object_order_depends_target_BookingSystem
+  DEP_FILE = CMakeFiles/BookingSystem.dir/src/register.cpp.o.d
+  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/BookingSystem.dir
   OBJECT_FILE_DIR = CMakeFiles/BookingSystem.dir/src
 
@@ -78,7 +87,7 @@ build CMakeFiles/BookingSystem.dir/src/main.cpp.o: CXX_COMPILER__BookingSystem_u
 #############################################
 # Link the executable BookingSystem
 
-build BookingSystem: CXX_EXECUTABLE_LINKER__BookingSystem_Debug CMakeFiles/BookingSystem.dir/src/app.cpp.o CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o CMakeFiles/BookingSystem.dir/src/main.cpp.o
+build BookingSystem: CXX_EXECUTABLE_LINKER__BookingSystem_Debug CMakeFiles/BookingSystem.dir/src/app.cpp.o CMakeFiles/BookingSystem.dir/src/login.cpp.o CMakeFiles/BookingSystem.dir/src/main.cpp.o CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o CMakeFiles/BookingSystem.dir/src/register.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk
   OBJECT_DIR = CMakeFiles/BookingSystem.dir
   POST_BUILD = :

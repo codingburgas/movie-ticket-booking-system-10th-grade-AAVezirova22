@@ -1,6 +1,7 @@
 #include "../include/mainMenu.h"
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 
 static void clearScreen() {
 #ifdef _WIN64
@@ -54,7 +55,7 @@ void Menu::displayUserMenu() {
 
     switch (choice) {
         //tuk trqbva da ima viewMovies(); break;
-        case 1: break;
+        case 1: system("clear");
         case 2: break;
         default:
             std::cout << "Invalid input. Please try again!\n";
@@ -64,14 +65,14 @@ void Menu::displayUserMenu() {
 
 
 void Menu::drawTeamName() {
-    std::cout << "  __  __            _        _   _      _        _     _                 _    _                             _                 " << std::endl;
-    std::cout << " |  \\/  |          (_)      | | (_)    | |      | |   | |               | |  (_)                           | |                " << std::endl;
-    std::cout << " | \\  / | _____   ___  ___  | |_ _  ___| | _____| |_  | |__   ___   ___ | | ___ _ __   __ _   ___ _   _ ___| |_ ___ _ __ ___  " << std::endl;
-    std::cout << " | |\\/| |/ _ \\ \\ / / |/ _ \\ | __| |/ __| |/ / _ \\ __| | '_ \\ / _ \\ / _ \\| |/ / | '_ \\ / _` | / __| | | / __| __/ _ \\ '_ ` _ \\ " << std::endl;
-    std::cout << " | |  | | (_) \\ V /| |  __/ | |_| | (__|   <  __/ |_  | |_) | (_) | (_) |   <| | | | | (_| | \\__ \\ |_| \\__ \\ ||  __/ | | | | |" << std::endl;
-    std::cout << " |_|  |_|\\___/ \\_/ |_|\\___|  \\__|_|\\___|_|\\_\\___|\\__| |_.__/ \\___/ \\___/|_|\\_\\_|_| |_|\\__, | |___/\\__, |___/\\__\\___|_| |_| |_|" << std::endl;
-    std::cout << "                                                                                       __/ |       __/ |                      " << std::endl;
-    std::cout << "                                                                                      |___/       |___/                       " << std::endl;
+        std::ifstream file("../assets/drawTeamName.txt");
+
+        std::string line;
+        while (std::getline(file, line)) {
+            std::cout << line << std::endl;
+        }
+
+        file.close();
 }
 
 void Menu::displayLogin() {

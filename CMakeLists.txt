@@ -3,12 +3,17 @@ project(BookingSystem)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(businessLogicLayer)
-include_directories(dataAccessLayer)
 
 add_executable(BookingSystem
         src/app.cpp
-        include/app.h
+        src/login.cpp
+        src/main.cpp
         src/mainMenu.cpp
+        src/register.cpp
+
+        include/app.h
+        include/login.h
         include/mainMenu.h
-        src/main.cpp)
+        include/register.h)
+
+
