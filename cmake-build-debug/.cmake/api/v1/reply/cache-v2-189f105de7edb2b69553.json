@@ -274,102 +274,6 @@
 			"value" : "-O2 -g -DNDEBUG"
 		},
 		{
-			"name" : "CMAKE_C_COMPILER",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "C compiler"
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc"
-		},
-		{
-			"name" : "CMAKE_C_FLAGS",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Flags used by the C compiler during all build types."
-				}
-			],
-			"type" : "STRING",
-			"value" : ""
-		},
-		{
-			"name" : "CMAKE_C_FLAGS_DEBUG",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Flags used by the C compiler during DEBUG builds."
-				}
-			],
-			"type" : "STRING",
-			"value" : "-g"
-		},
-		{
-			"name" : "CMAKE_C_FLAGS_MINSIZEREL",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Flags used by the C compiler during MINSIZEREL builds."
-				}
-			],
-			"type" : "STRING",
-			"value" : "-Os -DNDEBUG"
-		},
-		{
-			"name" : "CMAKE_C_FLAGS_RELEASE",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Flags used by the C compiler during RELEASE builds."
-				}
-			],
-			"type" : "STRING",
-			"value" : "-O3 -DNDEBUG"
-		},
-		{
-			"name" : "CMAKE_C_FLAGS_RELWITHDEBINFO",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Flags used by the C compiler during RELWITHDEBINFO builds."
-				}
-			],
-			"type" : "STRING",
-			"value" : "-O2 -g -DNDEBUG"
-		},
-		{
 			"name" : "CMAKE_DLLTOOL",
 			"properties" : 
 			[
@@ -1180,6 +1084,1054 @@
 			],
 			"type" : "BOOL",
 			"value" : "FALSE"
+		},
+		{
+			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Details about finding OpenSSL"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "[/opt/homebrew/opt/openssl@3/lib/libcrypto.dylib][/opt/homebrew/opt/openssl@3/include][c ][v3.5.0()]"
+		},
+		{
+			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_mysql-concpp",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Details about finding mysql-concpp"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "[/opt/homebrew/opt/mysql-connector-c++/include][/opt/homebrew/opt/mysql-connector-c++/include][1][c ][v9.3.0()]"
+		},
+		{
+			"name" : "MYSQL_CONCPP_DEBUG_FOUND",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "0"
+		},
+		{
+			"name" : "MYSQL_CONCPP_INCLUDE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a file."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/opt/homebrew/opt/mysql-connector-c++/include"
+		},
+		{
+			"name" : "MYSQL_CONCPP_PLUGIN_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/opt/mysql-connector-c++/lib/plugin"
+		},
+		{
+			"name" : "MYSQL_CONCPP_RELEASE_FOUND",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "1"
+		},
+		{
+			"name" : "MYSQL_CONCPP_ROOT_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/opt/mysql-connector-c++"
+		},
+		{
+			"name" : "MYSQL_CONCPP_RUNTIME_LIBRARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/opt/mysql-connector-c++/lib"
+		},
+		{
+			"name" : "MYSQL_CONCPP_RUNTIME_LIBRARY_DIRS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/opt/mysql-connector-c++/lib"
+		},
+		{
+			"name" : "MYSQL_CONCPP_RUNTIME_LIBRARY_DIRS_RELEASE",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/opt/mysql-connector-c++/lib"
+		},
+		{
+			"name" : "MYSQL_CONCPP_RUNTIME_LIBRARY_DIR_RELEASE",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/opt/mysql-connector-c++/lib"
+		},
+		{
+			"name" : "MYSQL_CONCPP_VERSION",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "9.3.0"
+		},
+		{
+			"name" : "MYSQL_CONCPP_VERSION_COUNT",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "3"
+		},
+		{
+			"name" : "MYSQL_CONCPP_VERSION_MAJOR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "9"
+		},
+		{
+			"name" : "MYSQL_CONCPP_VERSION_MINOR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "3"
+		},
+		{
+			"name" : "MYSQL_CONCPP_VERSION_PATCH",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "0"
+		},
+		{
+			"name" : "MYSQL_CONCPP_VERSION_TWEAK",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "0"
+		},
+		{
+			"name" : "MYSQL_CONCPP_debug_FOUND",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "0"
+		},
+		{
+			"name" : "MYSQL_CONCPP_release_FOUND",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "1"
+		},
+		{
+			"name" : "OPENSSL_CRYPTO_LIBRARY",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/opt/homebrew/opt/openssl@3/lib/libcrypto.dylib"
+		},
+		{
+			"name" : "OPENSSL_INCLUDE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a file."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/opt/homebrew/opt/openssl@3/include"
+		},
+		{
+			"name" : "OPENSSL_SSL_LIBRARY",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/opt/homebrew/opt/openssl@3/lib/libssl.dylib"
+		},
+		{
+			"name" : "PKG_CONFIG_ARGN",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Arguments to supply to pkg-config"
+				}
+			],
+			"type" : "STRING",
+			"value" : ""
+		},
+		{
+			"name" : "PKG_CONFIG_EXECUTABLE",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "pkg-config executable"
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/opt/homebrew/bin/pkg-config"
+		},
+		{
+			"name" : "_OPENSSL_CFLAGS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "-I/opt/homebrew/Cellar/openssl@3/3.5.0/include"
+		},
+		{
+			"name" : "_OPENSSL_CFLAGS_I",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_CFLAGS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_FOUND",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "1"
+		},
+		{
+			"name" : "_OPENSSL_INCLUDEDIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/Cellar/openssl@3/3.5.0/include"
+		},
+		{
+			"name" : "_OPENSSL_INCLUDE_DIRS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/Cellar/openssl@3/3.5.0/include"
+		},
+		{
+			"name" : "_OPENSSL_LDFLAGS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "-L/opt/homebrew/Cellar/openssl@3/3.5.0/lib;-lssl;-lcrypto"
+		},
+		{
+			"name" : "_OPENSSL_LDFLAGS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_LIBDIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/Cellar/openssl@3/3.5.0/lib"
+		},
+		{
+			"name" : "_OPENSSL_LIBRARIES",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "ssl;crypto"
+		},
+		{
+			"name" : "_OPENSSL_LIBRARY_DIRS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/Cellar/openssl@3/3.5.0/lib"
+		},
+		{
+			"name" : "_OPENSSL_LIBS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_LIBS_L",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_LIBS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_LIBS_PATHS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_MODULE_NAME",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "openssl"
+		},
+		{
+			"name" : "_OPENSSL_PREFIX",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/Cellar/openssl@3/3.5.0"
+		},
+		{
+			"name" : "_OPENSSL_STATIC_CFLAGS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "-I/opt/homebrew/Cellar/openssl@3/3.5.0/include"
+		},
+		{
+			"name" : "_OPENSSL_STATIC_CFLAGS_I",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_STATIC_CFLAGS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_STATIC_INCLUDE_DIRS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/Cellar/openssl@3/3.5.0/include"
+		},
+		{
+			"name" : "_OPENSSL_STATIC_LDFLAGS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "-L/opt/homebrew/Cellar/openssl@3/3.5.0/lib;-lssl;-lcrypto"
+		},
+		{
+			"name" : "_OPENSSL_STATIC_LDFLAGS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_STATIC_LIBDIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_STATIC_LIBRARIES",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "ssl;crypto"
+		},
+		{
+			"name" : "_OPENSSL_STATIC_LIBRARY_DIRS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/Cellar/openssl@3/3.5.0/lib"
+		},
+		{
+			"name" : "_OPENSSL_STATIC_LIBS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_STATIC_LIBS_L",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_STATIC_LIBS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_STATIC_LIBS_PATHS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_VERSION",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "3.5.0"
+		},
+		{
+			"name" : "_OPENSSL_openssl_INCLUDEDIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_openssl_LIBDIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_openssl_PREFIX",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_OPENSSL_openssl_VERSION",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "__pkg_config_arguments__OPENSSL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "QUIET;openssl"
+		},
+		{
+			"name" : "__pkg_config_checked__OPENSSL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "1"
+		},
+		{
+			"name" : "lib_path",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "lib_path-NOTFOUND"
+		},
+		{
+			"name" : "lib_path_debug",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "lib_path_debug-NOTFOUND"
+		},
+		{
+			"name" : "mysql-concpp_DEBUG_FOUND",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "0"
+		},
+		{
+			"name" : "mysql-concpp_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for mysql-concpp."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/opt/homebrew/opt/mysql-connector-c++"
+		},
+		{
+			"name" : "mysql-concpp_PLUGIN_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/opt/mysql-connector-c++/lib/plugin"
+		},
+		{
+			"name" : "mysql-concpp_RELEASE_FOUND",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "1"
+		},
+		{
+			"name" : "mysql-concpp_ROOT_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/opt/mysql-connector-c++"
+		},
+		{
+			"name" : "mysql-concpp_RUNTIME_LIBRARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/opt/mysql-connector-c++/lib"
+		},
+		{
+			"name" : "mysql-concpp_RUNTIME_LIBRARY_DIRS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/opt/mysql-connector-c++/lib"
+		},
+		{
+			"name" : "mysql-concpp_RUNTIME_LIBRARY_DIRS_RELEASE",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/opt/mysql-connector-c++/lib"
+		},
+		{
+			"name" : "mysql-concpp_RUNTIME_LIBRARY_DIR_RELEASE",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/opt/mysql-connector-c++/lib"
+		},
+		{
+			"name" : "mysql-concpp_VERSION",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "9.3.0"
+		},
+		{
+			"name" : "mysql-concpp_VERSION_COUNT",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "3"
+		},
+		{
+			"name" : "mysql-concpp_VERSION_MAJOR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "9"
+		},
+		{
+			"name" : "mysql-concpp_VERSION_MINOR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "3"
+		},
+		{
+			"name" : "mysql-concpp_VERSION_PATCH",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "0"
+		},
+		{
+			"name" : "mysql-concpp_VERSION_TWEAK",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "0"
+		},
+		{
+			"name" : "mysql-concpp_debug_FOUND",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "0"
+		},
+		{
+			"name" : "mysql-concpp_release_FOUND",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "mysql-concpp module config variable"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "1"
+		},
+		{
+			"name" : "pkgcfg_lib__OPENSSL_crypto",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/opt/homebrew/Cellar/openssl@3/3.5.0/lib/libcrypto.dylib"
+		},
+		{
+			"name" : "pkgcfg_lib__OPENSSL_ssl",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/opt/homebrew/Cellar/openssl@3/3.5.0/lib/libssl.dylib"
+		},
+		{
+			"name" : "prefix_result",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/Cellar/openssl@3/3.5.0/lib"
+		},
+		{
+			"name" : "ssl_crypto",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "ssl_crypto-NOTFOUND"
+		},
+		{
+			"name" : "ssl_lib",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "ssl_lib-NOTFOUND"
 		}
 	],
 	"kind" : "cache",

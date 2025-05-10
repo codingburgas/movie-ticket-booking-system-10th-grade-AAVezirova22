@@ -51,31 +51,43 @@ build cmake_object_order_depends_target_BookingSystem: phony || .
 
 build CMakeFiles/BookingSystem.dir/src/app.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/src/app.cpp || cmake_object_order_depends_target_BookingSystem
   DEP_FILE = CMakeFiles/BookingSystem.dir/src/app.cpp.o.d
-  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/opt/mysql-connector-c++/include -isystem /opt/homebrew/opt/openssl@3/include
   OBJECT_DIR = CMakeFiles/BookingSystem.dir
   OBJECT_FILE_DIR = CMakeFiles/BookingSystem.dir/src
 
 build CMakeFiles/BookingSystem.dir/src/login.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/src/login.cpp || cmake_object_order_depends_target_BookingSystem
   DEP_FILE = CMakeFiles/BookingSystem.dir/src/login.cpp.o.d
-  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/opt/mysql-connector-c++/include -isystem /opt/homebrew/opt/openssl@3/include
   OBJECT_DIR = CMakeFiles/BookingSystem.dir
   OBJECT_FILE_DIR = CMakeFiles/BookingSystem.dir/src
 
 build CMakeFiles/BookingSystem.dir/src/main.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/src/main.cpp || cmake_object_order_depends_target_BookingSystem
   DEP_FILE = CMakeFiles/BookingSystem.dir/src/main.cpp.o.d
-  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/opt/mysql-connector-c++/include -isystem /opt/homebrew/opt/openssl@3/include
   OBJECT_DIR = CMakeFiles/BookingSystem.dir
   OBJECT_FILE_DIR = CMakeFiles/BookingSystem.dir/src
 
 build CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/src/mainMenu.cpp || cmake_object_order_depends_target_BookingSystem
   DEP_FILE = CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o.d
-  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/opt/mysql-connector-c++/include -isystem /opt/homebrew/opt/openssl@3/include
   OBJECT_DIR = CMakeFiles/BookingSystem.dir
   OBJECT_FILE_DIR = CMakeFiles/BookingSystem.dir/src
 
 build CMakeFiles/BookingSystem.dir/src/register.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/src/register.cpp || cmake_object_order_depends_target_BookingSystem
   DEP_FILE = CMakeFiles/BookingSystem.dir/src/register.cpp.o.d
-  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/opt/mysql-connector-c++/include -isystem /opt/homebrew/opt/openssl@3/include
+  OBJECT_DIR = CMakeFiles/BookingSystem.dir
+  OBJECT_FILE_DIR = CMakeFiles/BookingSystem.dir/src
+
+build CMakeFiles/BookingSystem.dir/src/db.cpp.o: CXX_COMPILER__BookingSystem_unscanned_Debug /Users/ani/Documents/School/BookingSystem/src/db.cpp || cmake_object_order_depends_target_BookingSystem
+  DEP_FILE = CMakeFiles/BookingSystem.dir/src/db.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  INCLUDES = -isystem /opt/homebrew/opt/mysql-connector-c++/include -isystem /opt/homebrew/opt/openssl@3/include
   OBJECT_DIR = CMakeFiles/BookingSystem.dir
   OBJECT_FILE_DIR = CMakeFiles/BookingSystem.dir/src
 
@@ -87,8 +99,10 @@ build CMakeFiles/BookingSystem.dir/src/register.cpp.o: CXX_COMPILER__BookingSyst
 #############################################
 # Link the executable BookingSystem
 
-build BookingSystem: CXX_EXECUTABLE_LINKER__BookingSystem_Debug CMakeFiles/BookingSystem.dir/src/app.cpp.o CMakeFiles/BookingSystem.dir/src/login.cpp.o CMakeFiles/BookingSystem.dir/src/main.cpp.o CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o CMakeFiles/BookingSystem.dir/src/register.cpp.o
+build BookingSystem: CXX_EXECUTABLE_LINKER__BookingSystem_Debug CMakeFiles/BookingSystem.dir/src/app.cpp.o CMakeFiles/BookingSystem.dir/src/login.cpp.o CMakeFiles/BookingSystem.dir/src/main.cpp.o CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o CMakeFiles/BookingSystem.dir/src/register.cpp.o CMakeFiles/BookingSystem.dir/src/db.cpp.o | /opt/homebrew/opt/mysql-connector-c++/lib/libmysqlcppconnx.dylib /opt/homebrew/opt/openssl@3/lib/libssl.dylib /opt/homebrew/opt/openssl@3/lib/libcrypto.dylib
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/opt/openssl@3/lib  /opt/homebrew/opt/mysql-connector-c++/lib/libmysqlcppconnx.dylib  /opt/homebrew/opt/openssl@3/lib/libssl.dylib  /opt/homebrew/opt/openssl@3/lib/libcrypto.dylib  -lssl  -lcrypto
+  LINK_PATH = -L/opt/homebrew/opt/openssl@3/lib
   OBJECT_DIR = CMakeFiles/BookingSystem.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -130,13 +144,6 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /Users/ani/Documents/School/BookingSystem/cmake-build-debug
 
-build codegen: phony
-
-# =============================================================================
-
-#############################################
-# Folder: /Users/ani/Documents/School/BookingSystem/cmake-build-debug
-
 build all: phony BookingSystem
 
 # =============================================================================
@@ -146,14 +153,14 @@ build all: phony BookingSystem
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /Users/ani/Documents/School/BookingSystem/CMakeLists.txt /opt/homebrew/share/cmake/Modules/CMakeCInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/share/cmake/Modules/Compiler/AppleClang-C.cmake /opt/homebrew/share/cmake/Modules/Compiler/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-C.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-AppleClang-C.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-C.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-C.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.31.3/CMakeCCompiler.cmake CMakeFiles/3.31.3/CMakeCXXCompiler.cmake CMakeFiles/3.31.3/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /Users/ani/Documents/School/BookingSystem/CMakeLists.txt /opt/homebrew/opt/mysql-connector-c++/mysql-concpp-config-version.cmake /opt/homebrew/opt/mysql-connector-c++/mysql-concpp-config.cmake /opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/share/cmake/Modules/Compiler/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/share/cmake/Modules/FindOpenSSL.cmake /opt/homebrew/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /opt/homebrew/share/cmake/Modules/FindPackageMessage.cmake /opt/homebrew/share/cmake/Modules/FindPkgConfig.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.31.3/CMakeCXXCompiler.cmake CMakeFiles/3.31.3/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /Users/ani/Documents/School/BookingSystem/CMakeLists.txt /opt/homebrew/share/cmake/Modules/CMakeCInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/share/cmake/Modules/Compiler/AppleClang-C.cmake /opt/homebrew/share/cmake/Modules/Compiler/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-C.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-AppleClang-C.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-C.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-C.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.31.3/CMakeCCompiler.cmake CMakeFiles/3.31.3/CMakeCXXCompiler.cmake CMakeFiles/3.31.3/CMakeSystem.cmake: phony
+build /Users/ani/Documents/School/BookingSystem/CMakeLists.txt /opt/homebrew/opt/mysql-connector-c++/mysql-concpp-config-version.cmake /opt/homebrew/opt/mysql-connector-c++/mysql-concpp-config.cmake /opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/share/cmake/Modules/Compiler/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/share/cmake/Modules/FindOpenSSL.cmake /opt/homebrew/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /opt/homebrew/share/cmake/Modules/FindPackageMessage.cmake /opt/homebrew/share/cmake/Modules/FindPkgConfig.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.31.3/CMakeCXXCompiler.cmake CMakeFiles/3.31.3/CMakeSystem.cmake: phony
 
 
 #############################################

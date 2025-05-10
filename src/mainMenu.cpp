@@ -1,141 +1,127 @@
 #include "../include/mainMenu.h"
+#include "../include/login.h"
+#include "../include/register.h"
+
 #include <iostream>
 #include <iomanip>
 #include <fstream>
+#include <limits>
 
-static void clearScreen() {
-#ifdef _WIN64
+void clearScreen()
+{
+#if defined(_WIN32) || defined(_WIN64)
     system("cls");
-#elif __APPLE__
+#else
     system("clear");
 #endif
 }
 
-void Menu::displayMainMenu() {
-    drawTeamName();
-    std::cout << std::setw(97) << "==========================================================================\n";
-    std::cout << std::setw(97) << "|                                MAIN MENU                               |\n";
-    std::cout << std::setw(97) << "==========================================================================\n";
-    std::cout << std::setw(97) << "|                                                                        |\n";
-    std::cout << std::setw(97) << "|                                1. Login                                |\n";
-    std::cout << std::setw(97) << "|                                1. Register                             |\n";
-    std::cout << std::setw(97) << "|                                2. View all movies                      |\n";
-    std::cout << std::setw(97) << "|                                3. Exit                                 |\n";
-    std::cout << std::setw(97) << "|                                                                        |\n";
-    std::cout << std::setw(97) << "==========================================================================\n";
-    std::cout << std::setw(60) << "Enter your choice: ";
+void Menu::displayMainMenu()
+{
+    while (true) {
+        clearScreen();
+        drawTeamName();
 
-    std::cin >> choice;
+        std::cout << std::setw(97) << "==========================================================================\n";
+        std::cout << std::setw(97) << "|                                MAIN MENU                               |\n";
+        std::cout << std::setw(97) << "==========================================================================\n";
+        std::cout << std::setw(97) << "|                                                                        |\n";
+        std::cout << std::setw(97) << "|                                1. Login                                |\n";
+        std::cout << std::setw(97) << "|                                2. Register                             |\n";
+        std::cout << std::setw(97) << "|                                3. View all movies (TODO)               |\n";
+        std::cout << std::setw(97) << "|                                4. Exit                                 |\n";
+        std::cout << std::setw(97) << "|                                                                        |\n";
+        std::cout << std::setw(97) << "==========================================================================\n";
+        std::cout << std::setw(60) << "Enter your choice: ";
 
-    switch (choice) {
-        case 1: displayLogin(); break;
-        case 2: displayRegister(); break;
-        //tuk trqbva da ima viewMovies(); break;
-        case 3:break;
-        case 4: break;
-        default:
-            std::cout << "Invalid input. Please try again!\n";
-        return;
-    }
-}
-
-void Menu::displayUserMenu() {
-    drawTeamName();
-    std::cout << std::setw(97) << "==========================================================================\n";
-    std::cout << std::setw(97) << "|                                MAIN MENU                               |\n";
-    std::cout << std::setw(97) << "==========================================================================\n";
-    std::cout << std::setw(97) << "|                                                                        |\n";
-    std::cout << std::setw(97) << "|                                2. View all movies                      |\n";
-    std::cout << std::setw(97) << "|                                3. Exit                                 |\n";
-    std::cout << std::setw(97) << "|                                                                        |\n";
-    std::cout << std::setw(97) << "==========================================================================\n";
-    std::cout << std::setw(60) << "Enter your choice: ";
-
-    std::cin >> choice;
-
-    switch (choice) {
-        //tuk trqbva da ima viewMovies(); break;
-        case 1: system("clear");
-        case 2: break;
-        default:
-            std::cout << "Invalid input. Please try again!\n";
-        return;
-    }
-}
-
-
-void Menu::drawTeamName() {
-        std::ifstream file("../assets/drawTeamName.txt");
-
-        std::string line;
-        while (std::getline(file, line)) {
-            std::cout << line << std::endl;
+        std::cin >> choice;
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
         }
 
-        file.close();
+        switch (choice) {
+            case 1:
+                loginUser();
+                break;
+            case 2:
+                registerUser();
+                break;
+            case 3:
+                std::cout << "\n[viewMovies() not implemented yet]\n";
+                break;
+            case 4:
+                std::cout << "\nExiting… Bye!\n";
+                return;
+            default:
+                std::cout << "\nInvalid input. Please try again!\n";
+                break;
+        }
+
+        std::cout << "\nPress <Enter> to continue…";
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin.get();
+    }
 }
 
-void Menu::displayLogin() {
+void Menu::displayUserMenu()
+{
     clearScreen();
-    std::cout << '\n';
     drawTeamName();
 
     std::cout << std::setw(97) << "==========================================================================\n";
-    std::cout << std::setw(97) << "|                                LOGIN                                   |\n";
+    std::cout << std::setw(97) << "|                               USER  MENU                               |\n";
     std::cout << std::setw(97) << "==========================================================================\n";
     std::cout << std::setw(97) << "|                                                                        |\n";
-    std::cout << std::setw(67) << "                        Enter your username: ";
-    std::cin >> username;
-
-    std::cout << std::setw(97) << "|                                                                        |\n";
-    std::cout << std::setw(67) << "                        Enter your password: ";
-    std::cin >> password;
-    std::cout << std::setw(97) << "|                                                                        |\n";
-
-    // if (!LoginManager::login(username, password)) {
-    //     displayLogin();
-    // }
-    // else {
-    //     displayUserMenu();
-    // }
-
+    std::cout << std::setw(97) << "|                                1. View all movies (TODO)               |\n";
+    std::cout << std::setw(97) << "|                                2. Logout                               |\n";
     std::cout << std::setw(97) << "|                                                                        |\n";
     std::cout << std::setw(97) << "==========================================================================\n";
+    std::cout << std::setw(60) << "Enter your choice: ";
+
+    std::cin >> choice;
+
+    switch (choice) {
+        case 1:
+            std::cout << "\n[viewMovies() not implemented yet]\n";
+            break;
+        case 2:
+            std::cout << "\nLogging out…\n";
+            return;
+        default:
+            std::cout << "Invalid input. Please try again!\n";
+            break;
+    }
+
+    std::cout << "\nPress <Enter> to continue…";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }
 
-//Displays the register menu
-void Menu::drawRegister() {
+void Menu::drawTeamName()
+{
+    std::ifstream file("../assets/drawTeamName.txt");
+    if (!file.is_open()) return;
+
+    std::string line;
+    while (std::getline(file, line))
+        std::cout << line << '\n';
+}
+
+void Menu::drawRegister()
+{
     clearScreen();
-    std::cout << '\n';
     drawTeamName();
 
     std::cout << std::setw(97) << "==========================================================================\n";
     std::cout << std::setw(97) << "|                                REGISTER                                |\n";
     std::cout << std::setw(97) << "==========================================================================\n";
     std::cout << std::setw(97) << "|                                                                        |\n";
-    //emailValidation();
-
-    std::cout << std::setw(97) << "|                                                                        |\n";
-    //usernameValidation();
-
-    std::cout << std::setw(97) << "|                                                                        |\n";
-    //passwordValidation();
-
-    std::cout << std::setw(97) << "|                                                                        |\n";
-    //passwordMatch();
-
+    std::cout << std::setw(97) << "|                 (validation prompts moved to RegisterUser)             |\n";
     std::cout << std::setw(97) << "|                                                                        |\n";
     std::cout << std::setw(97) << "==========================================================================\n";
 }
 
-void Menu::displayRegister() {
-    drawRegister();
-
-    // if (RegisterManager::registerUser(username, password)) {
-    //     std::cout << "User registered successfully!\n";
-    //     displayLogin();
-    // }
-    // else {
-    //     std::cout << "Registration failed!\n";
-    // }
-}
+void Menu::displayLogin()  {}
+void Menu::displayRegister(){}

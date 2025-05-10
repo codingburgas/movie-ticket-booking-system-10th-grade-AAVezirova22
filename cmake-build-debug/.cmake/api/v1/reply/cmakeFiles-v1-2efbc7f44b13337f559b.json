@@ -20,10 +20,6 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-debug/CMakeFiles/3.31.3/CMakeCCompiler.cmake"
-		},
-		{
-			"isGenerated" : true,
 			"path" : "cmake-build-debug/CMakeFiles/3.31.3/CMakeCXXCompiler.cmake"
 		},
 		{
@@ -54,7 +50,7 @@
 		{
 			"isCMake" : true,
 			"isExternal" : true,
-			"path" : "/opt/homebrew/share/cmake/Modules/CMakeCInformation.cmake"
+			"path" : "/opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -64,7 +60,7 @@
 		{
 			"isCMake" : true,
 			"isExternal" : true,
-			"path" : "/opt/homebrew/share/cmake/Modules/Compiler/AppleClang-C.cmake"
+			"path" : "/opt/homebrew/share/cmake/Modules/Compiler/AppleClang-CXX.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -85,76 +81,6 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "/opt/homebrew/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/opt/homebrew/share/cmake/Modules/Platform/Apple-AppleClang-C.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-C.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/opt/homebrew/share/cmake/Modules/Platform/Apple-Clang.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/opt/homebrew/share/cmake/Modules/CMakeCommonLanguageInclude.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/opt/homebrew/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/opt/homebrew/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/opt/homebrew/share/cmake/Modules/Linker/AppleClang-C.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/opt/homebrew/share/cmake/Modules/Linker/AppleClang.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-C.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/opt/homebrew/share/cmake/Modules/CMakeLanguageInformation.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/opt/homebrew/share/cmake/Modules/Compiler/AppleClang-CXX.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/opt/homebrew/share/cmake/Modules/Compiler/Clang.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -205,6 +131,54 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "/opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/opt/mysql-connector-c++/mysql-concpp-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/opt/homebrew/opt/mysql-connector-c++/mysql-concpp-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/opt/homebrew/share/cmake/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/opt/homebrew/share/cmake/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/opt/homebrew/share/cmake/Modules/FindOpenSSL.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/opt/homebrew/share/cmake/Modules/FindPkgConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/opt/homebrew/share/cmake/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/opt/homebrew/share/cmake/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/opt/homebrew/share/cmake/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/opt/homebrew/share/cmake/Modules/FindPackageMessage.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",

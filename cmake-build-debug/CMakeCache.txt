@@ -54,24 +54,6 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
-//C compiler
-CMAKE_C_COMPILER:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
-
-//Flags used by the C compiler during all build types.
-CMAKE_C_FLAGS:STRING=
-
-//Flags used by the C compiler during DEBUG builds.
-CMAKE_C_FLAGS_DEBUG:STRING=-g
-
-//Flags used by the C compiler during MINSIZEREL builds.
-CMAKE_C_FLAGS_MINSIZEREL:STRING=-Os -DNDEBUG
-
-//Flags used by the C compiler during RELEASE builds.
-CMAKE_C_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
-
-//Flags used by the C compiler during RELWITHDEBINFO builds.
-CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
-
 //Path to a program.
 CMAKE_DLLTOOL:FILEPATH=CMAKE_DLLTOOL-NOTFOUND
 
@@ -225,6 +207,45 @@ CMAKE_TAPI:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeD
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Path to a file.
+MYSQL_CONCPP_INCLUDE_DIR:PATH=/opt/homebrew/opt/mysql-connector-c++/include
+
+//Path to a library.
+OPENSSL_CRYPTO_LIBRARY:FILEPATH=/opt/homebrew/opt/openssl@3/lib/libcrypto.dylib
+
+//Path to a file.
+OPENSSL_INCLUDE_DIR:PATH=/opt/homebrew/opt/openssl@3/include
+
+//Path to a library.
+OPENSSL_SSL_LIBRARY:FILEPATH=/opt/homebrew/opt/openssl@3/lib/libssl.dylib
+
+//Arguments to supply to pkg-config
+PKG_CONFIG_ARGN:STRING=
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/opt/homebrew/bin/pkg-config
+
+//Path to a library.
+lib_path:FILEPATH=lib_path-NOTFOUND
+
+//Path to a library.
+lib_path_debug:FILEPATH=lib_path_debug-NOTFOUND
+
+//The directory containing a CMake configuration file for mysql-concpp.
+mysql-concpp_DIR:PATH=/opt/homebrew/opt/mysql-connector-c++
+
+//Path to a library.
+pkgcfg_lib__OPENSSL_crypto:FILEPATH=/opt/homebrew/Cellar/openssl@3/3.5.0/lib/libcrypto.dylib
+
+//Path to a library.
+pkgcfg_lib__OPENSSL_ssl:FILEPATH=/opt/homebrew/Cellar/openssl@3/3.5.0/lib/libssl.dylib
+
+//Path to a library.
+ssl_crypto:FILEPATH=ssl_crypto-NOTFOUND
+
+//Path to a library.
+ssl_lib:FILEPATH=ssl_lib-NOTFOUND
+
 
 ########################
 # INTERNAL cache entries
@@ -260,18 +281,6 @@ CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_RELWITHDEBINFO
 CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_COMPILER
-CMAKE_C_COMPILER-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_FLAGS
-CMAKE_C_FLAGS-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_FLAGS_DEBUG
-CMAKE_C_FLAGS_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_FLAGS_MINSIZEREL
-CMAKE_C_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_FLAGS_RELEASE
-CMAKE_C_FLAGS_RELEASE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_FLAGS_RELWITHDEBINFO
-CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_DLLTOOL
 CMAKE_DLLTOOL-ADVANCED:INTERNAL=1
 //Path to cache edit program executable.
@@ -367,4 +376,124 @@ CMAKE_TAPI-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding OpenSSL
+FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[/opt/homebrew/opt/openssl@3/lib/libcrypto.dylib][/opt/homebrew/opt/openssl@3/include][c ][v3.5.0()]
+//Details about finding mysql-concpp
+FIND_PACKAGE_MESSAGE_DETAILS_mysql-concpp:INTERNAL=[/opt/homebrew/opt/mysql-connector-c++/include][/opt/homebrew/opt/mysql-connector-c++/include][1][c ][v9.3.0()]
+//mysql-concpp module config variable
+MYSQL_CONCPP_DEBUG_FOUND:INTERNAL=0
+//mysql-concpp module config variable
+MYSQL_CONCPP_PLUGIN_DIR:INTERNAL=/opt/homebrew/opt/mysql-connector-c++/lib/plugin
+//mysql-concpp module config variable
+MYSQL_CONCPP_RELEASE_FOUND:INTERNAL=1
+//mysql-concpp module config variable
+MYSQL_CONCPP_ROOT_DIR:INTERNAL=/opt/homebrew/opt/mysql-connector-c++
+//mysql-concpp module config variable
+MYSQL_CONCPP_RUNTIME_LIBRARY_DIR:INTERNAL=/opt/homebrew/opt/mysql-connector-c++/lib
+//mysql-concpp module config variable
+MYSQL_CONCPP_RUNTIME_LIBRARY_DIRS:INTERNAL=/opt/homebrew/opt/mysql-connector-c++/lib
+//mysql-concpp module config variable
+MYSQL_CONCPP_RUNTIME_LIBRARY_DIRS_RELEASE:INTERNAL=/opt/homebrew/opt/mysql-connector-c++/lib
+//mysql-concpp module config variable
+MYSQL_CONCPP_RUNTIME_LIBRARY_DIR_RELEASE:INTERNAL=/opt/homebrew/opt/mysql-connector-c++/lib
+//mysql-concpp module config variable
+MYSQL_CONCPP_VERSION:INTERNAL=9.3.0
+//mysql-concpp module config variable
+MYSQL_CONCPP_VERSION_COUNT:INTERNAL=3
+//mysql-concpp module config variable
+MYSQL_CONCPP_VERSION_MAJOR:INTERNAL=9
+//mysql-concpp module config variable
+MYSQL_CONCPP_VERSION_MINOR:INTERNAL=3
+//mysql-concpp module config variable
+MYSQL_CONCPP_VERSION_PATCH:INTERNAL=0
+//mysql-concpp module config variable
+MYSQL_CONCPP_VERSION_TWEAK:INTERNAL=0
+//mysql-concpp module config variable
+MYSQL_CONCPP_debug_FOUND:INTERNAL=0
+//mysql-concpp module config variable
+MYSQL_CONCPP_release_FOUND:INTERNAL=1
+//ADVANCED property for variable: OPENSSL_CRYPTO_LIBRARY
+OPENSSL_CRYPTO_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPENSSL_INCLUDE_DIR
+OPENSSL_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPENSSL_SSL_LIBRARY
+OPENSSL_SSL_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_ARGN
+PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+_OPENSSL_CFLAGS:INTERNAL=-I/opt/homebrew/Cellar/openssl@3/3.5.0/include
+_OPENSSL_CFLAGS_I:INTERNAL=
+_OPENSSL_CFLAGS_OTHER:INTERNAL=
+_OPENSSL_FOUND:INTERNAL=1
+_OPENSSL_INCLUDEDIR:INTERNAL=/opt/homebrew/Cellar/openssl@3/3.5.0/include
+_OPENSSL_INCLUDE_DIRS:INTERNAL=/opt/homebrew/Cellar/openssl@3/3.5.0/include
+_OPENSSL_LDFLAGS:INTERNAL=-L/opt/homebrew/Cellar/openssl@3/3.5.0/lib;-lssl;-lcrypto
+_OPENSSL_LDFLAGS_OTHER:INTERNAL=
+_OPENSSL_LIBDIR:INTERNAL=/opt/homebrew/Cellar/openssl@3/3.5.0/lib
+_OPENSSL_LIBRARIES:INTERNAL=ssl;crypto
+_OPENSSL_LIBRARY_DIRS:INTERNAL=/opt/homebrew/Cellar/openssl@3/3.5.0/lib
+_OPENSSL_LIBS:INTERNAL=
+_OPENSSL_LIBS_L:INTERNAL=
+_OPENSSL_LIBS_OTHER:INTERNAL=
+_OPENSSL_LIBS_PATHS:INTERNAL=
+_OPENSSL_MODULE_NAME:INTERNAL=openssl
+_OPENSSL_PREFIX:INTERNAL=/opt/homebrew/Cellar/openssl@3/3.5.0
+_OPENSSL_STATIC_CFLAGS:INTERNAL=-I/opt/homebrew/Cellar/openssl@3/3.5.0/include
+_OPENSSL_STATIC_CFLAGS_I:INTERNAL=
+_OPENSSL_STATIC_CFLAGS_OTHER:INTERNAL=
+_OPENSSL_STATIC_INCLUDE_DIRS:INTERNAL=/opt/homebrew/Cellar/openssl@3/3.5.0/include
+_OPENSSL_STATIC_LDFLAGS:INTERNAL=-L/opt/homebrew/Cellar/openssl@3/3.5.0/lib;-lssl;-lcrypto
+_OPENSSL_STATIC_LDFLAGS_OTHER:INTERNAL=
+_OPENSSL_STATIC_LIBDIR:INTERNAL=
+_OPENSSL_STATIC_LIBRARIES:INTERNAL=ssl;crypto
+_OPENSSL_STATIC_LIBRARY_DIRS:INTERNAL=/opt/homebrew/Cellar/openssl@3/3.5.0/lib
+_OPENSSL_STATIC_LIBS:INTERNAL=
+_OPENSSL_STATIC_LIBS_L:INTERNAL=
+_OPENSSL_STATIC_LIBS_OTHER:INTERNAL=
+_OPENSSL_STATIC_LIBS_PATHS:INTERNAL=
+_OPENSSL_VERSION:INTERNAL=3.5.0
+_OPENSSL_openssl_INCLUDEDIR:INTERNAL=
+_OPENSSL_openssl_LIBDIR:INTERNAL=
+_OPENSSL_openssl_PREFIX:INTERNAL=
+_OPENSSL_openssl_VERSION:INTERNAL=
+__pkg_config_arguments__OPENSSL:INTERNAL=QUIET;openssl
+__pkg_config_checked__OPENSSL:INTERNAL=1
+//mysql-concpp module config variable
+mysql-concpp_DEBUG_FOUND:INTERNAL=0
+//mysql-concpp module config variable
+mysql-concpp_PLUGIN_DIR:INTERNAL=/opt/homebrew/opt/mysql-connector-c++/lib/plugin
+//mysql-concpp module config variable
+mysql-concpp_RELEASE_FOUND:INTERNAL=1
+//mysql-concpp module config variable
+mysql-concpp_ROOT_DIR:INTERNAL=/opt/homebrew/opt/mysql-connector-c++
+//mysql-concpp module config variable
+mysql-concpp_RUNTIME_LIBRARY_DIR:INTERNAL=/opt/homebrew/opt/mysql-connector-c++/lib
+//mysql-concpp module config variable
+mysql-concpp_RUNTIME_LIBRARY_DIRS:INTERNAL=/opt/homebrew/opt/mysql-connector-c++/lib
+//mysql-concpp module config variable
+mysql-concpp_RUNTIME_LIBRARY_DIRS_RELEASE:INTERNAL=/opt/homebrew/opt/mysql-connector-c++/lib
+//mysql-concpp module config variable
+mysql-concpp_RUNTIME_LIBRARY_DIR_RELEASE:INTERNAL=/opt/homebrew/opt/mysql-connector-c++/lib
+//mysql-concpp module config variable
+mysql-concpp_VERSION:INTERNAL=9.3.0
+//mysql-concpp module config variable
+mysql-concpp_VERSION_COUNT:INTERNAL=3
+//mysql-concpp module config variable
+mysql-concpp_VERSION_MAJOR:INTERNAL=9
+//mysql-concpp module config variable
+mysql-concpp_VERSION_MINOR:INTERNAL=3
+//mysql-concpp module config variable
+mysql-concpp_VERSION_PATCH:INTERNAL=0
+//mysql-concpp module config variable
+mysql-concpp_VERSION_TWEAK:INTERNAL=0
+//mysql-concpp module config variable
+mysql-concpp_debug_FOUND:INTERNAL=0
+//mysql-concpp module config variable
+mysql-concpp_release_FOUND:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib__OPENSSL_crypto
+pkgcfg_lib__OPENSSL_crypto-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib__OPENSSL_ssl
+pkgcfg_lib__OPENSSL_ssl-ADVANCED:INTERNAL=1
+prefix_result:INTERNAL=/opt/homebrew/Cellar/openssl@3/3.5.0/lib
 

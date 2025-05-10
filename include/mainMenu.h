@@ -14,18 +14,10 @@ public:
     void displayUserMenu();
 
 
-    //void emailValidation();
-    //void passwordValidation();
-    //void passwordMatch();
-    //void usernameValidation();
-
 private:
-    int choice;
-
-    std::string email = "";
-    std::string username = "";
-    std::string password = "";
-    std::string confirmPassword = "";
+    int choice {};
+    std::string username;
+    std::string password;
 
     bool hasUpper = false;
     bool hasDigit = false;
