@@ -46,6 +46,16 @@ void Menu::drawUserMenu() {
         std::cout << line << '\n';
 }
 
+void Menu::drawAdminMenu() {
+    std::ifstream file("../assets/drawAdminMenu.txt");
+    if (!file.is_open()) return;
+
+    std::string line;
+    while (std::getline(file, line))
+        std::cout << line << '\n';
+}
+
+
 void Menu::displayMainMenu()
 {
     while (true) {
@@ -120,18 +130,7 @@ void Menu::displayAdminMenu(const User& currentUser)
     while (true) {
         clearScreen();
         drawTeamName();
-
-        std::cout << std::setw(97) << "==========================================================================\n";
-        std::cout << std::setw(97) << "|                               ADMIN  MENU                              |\n";
-        std::cout << std::setw(97) << "==========================================================================\n";
-        std::cout << std::setw(97) << "|                                                                        |\n";
-        std::cout << std::setw(97) << "|                        1. Promote user to admin                        |\n";
-        std::cout << std::setw(97) << "|                        2. Demote admin to user                         |\n";
-        std::cout << std::setw(97) << "|                        3. Add cinema / movie (TODO)                    |\n";
-        std::cout << std::setw(97) << "|                        4. Logout                                       |\n";
-        std::cout << std::setw(97) << "|                                                                        |\n";
-        std::cout << std::setw(97) << "==========================================================================\n";
-        std::cout << std::setw(60) << "Enter your choice: ";
+        drawAdminMenu();
 
         std::cin >> choice;
         if (std::cin.fail()) {

@@ -15,6 +15,7 @@ public:
     void drawRegister();
     void drawMainMenu();
     void drawUserMenu();
+    void drawAdminMenu();
 
 private:
     void displayUserMenu (const User& currentUser);
