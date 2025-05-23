@@ -30,25 +30,25 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 16,
+				"line" : 13,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 32,
+				"line" : 29,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 35,
+				"line" : 31,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 0,
-				"line" : 9,
+				"line" : 8,
 				"parent" : 0
 			},
 			{
@@ -196,7 +196,8 @@
 				7,
 				8,
 				9,
-				10
+				10,
+				11
 			]
 		}
 	],
@@ -261,6 +262,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "include/db.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/user.h",
 			"sourceGroupIndex" : 1
 		}
 	],

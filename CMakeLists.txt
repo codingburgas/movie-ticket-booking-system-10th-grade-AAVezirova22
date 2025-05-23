@@ -4,15 +4,12 @@ project(BookingSystem LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# ── Connector/C++ (X DevAPI) ────────────────────────────────────────────────
 list(APPEND CMAKE_PREFIX_PATH "/opt/homebrew/opt/mysql-connector-c++")
-find_package(mysql-concpp CONFIG REQUIRED)          # → mysql::concpp
+find_package(mysql-concpp CONFIG REQUIRED)
 
-# ── OpenSSL (keg‑only) ──────────────────────────────────────────────────────
 list(APPEND CMAKE_PREFIX_PATH "/opt/homebrew/opt/openssl@3")
-find_package(OpenSSL REQUIRED)                      # → OpenSSL::SSL / Crypto
+find_package(OpenSSL REQUIRED)
 
-# ── Executable ──────────────────────────────────────────────────────────────
 add_executable(BookingSystem
         src/app.cpp
         src/login.cpp
@@ -26,12 +23,11 @@ add_executable(BookingSystem
         include/mainMenu.h
         include/register.h
         include/db.h
+        include/user.h
 )
 
-# Add OpenSSL’s keg directory so the trailing  -lssl -lcrypto  resolve.
 target_link_directories(BookingSystem PRIVATE /opt/homebrew/opt/openssl@3/lib)
 
-# Link all imported targets (order doesn’t matter after CMake 3.13)
 target_link_libraries(BookingSystem
         PRIVATE
         mysql::concpp

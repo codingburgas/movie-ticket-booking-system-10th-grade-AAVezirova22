@@ -1,13 +1,15 @@
 #include "../include/mainMenu.h"
 #include "../include/login.h"
 #include "../include/register.h"
+#include "../include/db.h"
 
 #include <iostream>
 #include <iomanip>
 #include <fstream>
 #include <limits>
+#include <vector>
 
-void clearScreen()
+void Menu::clearScreen()
 {
 #if defined(_WIN32) || defined(_WIN64)
     system("cls");
@@ -16,23 +18,40 @@ void clearScreen()
 #endif
 }
 
+void Menu::drawTeamName()
+{
+    std::ifstream file("../assets/drawTeamName.txt");
+    if (!file.is_open()) return;
+
+    std::string line;
+    while (std::getline(file, line))
+        std::cout << line << '\n';
+}
+
+void Menu::drawMainMenu() {
+    std::ifstream file("../assets/drawMainMenu.txt");
+    if (!file.is_open()) return;
+
+    std::string line;
+    while (std::getline(file, line))
+        std::cout << line << '\n';
+}
+
+void Menu::drawUserMenu() {
+    std::ifstream file("../assets/drawUserMenu.txt");
+    if (!file.is_open()) return;
+
+    std::string line;
+    while (std::getline(file, line))
+        std::cout << line << '\n';
+}
+
 void Menu::displayMainMenu()
 {
     while (true) {
         clearScreen();
         drawTeamName();
-
-        std::cout << std::setw(97) << "==========================================================================\n";
-        std::cout << std::setw(97) << "|                                MAIN MENU                               |\n";
-        std::cout << std::setw(97) << "==========================================================================\n";
-        std::cout << std::setw(97) << "|                                                                        |\n";
-        std::cout << std::setw(97) << "|                                1. Login                                |\n";
-        std::cout << std::setw(97) << "|                                2. Register                             |\n";
-        std::cout << std::setw(97) << "|                                3. View all movies (TODO)               |\n";
-        std::cout << std::setw(97) << "|                                4. Exit                                 |\n";
-        std::cout << std::setw(97) << "|                                                                        |\n";
-        std::cout << std::setw(97) << "==========================================================================\n";
-        std::cout << std::setw(60) << "Enter your choice: ";
+        drawMainMenu();
 
         std::cin >> choice;
         if (std::cin.fail()) {
@@ -42,9 +61,16 @@ void Menu::displayMainMenu()
         }
 
         switch (choice) {
-            case 1:
-                loginUser();
+            case 1: {
+                auto user = loginUser();
+                if (user) {
+                    if (user->isAdmin())
+                        displayAdminMenu(*user);
+                    else
+                        displayUserMenu (*user);
+                }
                 break;
+            }
             case 2:
                 registerUser();
                 break;
@@ -65,20 +91,11 @@ void Menu::displayMainMenu()
     }
 }
 
-void Menu::displayUserMenu()
+void Menu::displayUserMenu(const User&)
 {
     clearScreen();
     drawTeamName();
-
-    std::cout << std::setw(97) << "==========================================================================\n";
-    std::cout << std::setw(97) << "|                               USER  MENU                               |\n";
-    std::cout << std::setw(97) << "==========================================================================\n";
-    std::cout << std::setw(97) << "|                                                                        |\n";
-    std::cout << std::setw(97) << "|                                1. View all movies (TODO)               |\n";
-    std::cout << std::setw(97) << "|                                2. Logout                               |\n";
-    std::cout << std::setw(97) << "|                                                                        |\n";
-    std::cout << std::setw(97) << "==========================================================================\n";
-    std::cout << std::setw(60) << "Enter your choice: ";
+    drawUserMenu();
 
     std::cin >> choice;
 
@@ -93,35 +110,102 @@ void Menu::displayUserMenu()
             std::cout << "Invalid input. Please try again!\n";
             break;
     }
-
-    std::cout << "\nPress <Enter> to continue…";
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    std::cin.get();
 }
 
-void Menu::drawTeamName()
+
+void Menu::displayAdminMenu(const User& currentUser)
 {
-    std::ifstream file("../assets/drawTeamName.txt");
-    if (!file.is_open()) return;
+    loggedUser = currentUser;
 
-    std::string line;
-    while (std::getline(file, line))
-        std::cout << line << '\n';
+    while (true) {
+        clearScreen();
+        drawTeamName();
+
+        std::cout << std::setw(97) << "==========================================================================\n";
+        std::cout << std::setw(97) << "|                               ADMIN  MENU                              |\n";
+        std::cout << std::setw(97) << "==========================================================================\n";
+        std::cout << std::setw(97) << "|                                                                        |\n";
+        std::cout << std::setw(97) << "|                        1. Promote user to admin                        |\n";
+        std::cout << std::setw(97) << "|                        2. Demote admin to user                         |\n";
+        std::cout << std::setw(97) << "|                        3. Add cinema / movie (TODO)                    |\n";
+        std::cout << std::setw(97) << "|                        4. Logout                                       |\n";
+        std::cout << std::setw(97) << "|                                                                        |\n";
+        std::cout << std::setw(97) << "==========================================================================\n";
+        std::cout << std::setw(60) << "Enter your choice: ";
+
+        std::cin >> choice;
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        switch (choice) {
+            case 1: promoteUser(); break;
+            case 2: demoteUser (); break;
+            case 3:
+                std::cout << "\n[addCinemaOrMovie() not implemented yet]\n";
+                break;
+            case 4:
+                std::cout << "\nLogging out…\n";
+                return;
+            default:
+                std::cout << "\nInvalid input. Please try again!\n";
+                break;
+        }
+
+        std::cout << "\nPress <Enter> to continue…";
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin.get();
+    }
 }
 
-void Menu::drawRegister()
+
+void Menu::promoteUser()
 {
-    clearScreen();
-    drawTeamName();
+    auto users = fetchAllUsers();
 
-    std::cout << std::setw(97) << "==========================================================================\n";
-    std::cout << std::setw(97) << "|                                REGISTER                                |\n";
-    std::cout << std::setw(97) << "==========================================================================\n";
-    std::cout << std::setw(97) << "|                                                                        |\n";
-    std::cout << std::setw(97) << "|                 (validation prompts moved to RegisterUser)             |\n";
-    std::cout << std::setw(97) << "|                                                                        |\n";
-    std::cout << std::setw(97) << "==========================================================================\n";
+    std::cout << "\nCurrent users:\n";
+    std::cout << "ID  Username        Role\n";
+    std::cout << "---------------------------------\n";
+    for (const auto& u : users)
+        std::cout << std::left << std::setw(4)  << u.id
+                  << std::setw(16) << u.username
+                  << u.role << '\n';
+
+    int id;
+    std::cout << "\nEnter user ID to promote: ";
+    std::cin  >> id;
+
+    if (changeUserRole(id, "admin"))
+        std::cout << "Promotion successful.\n";
+    else
+        std::cout << "Promotion failed.\n";
 }
 
-void Menu::displayLogin()  {}
-void Menu::displayRegister(){}
+void Menu::demoteUser()
+{
+    auto users = fetchAllUsers();
+
+    std::cout << "\nCurrent admins:\n";
+    std::cout << "ID  Username\n";
+    std::cout << "----------------------\n";
+    for (const auto& u : users)
+        if (u.isAdmin())
+            std::cout << std::left << std::setw(4) << u.id
+                      << u.username << '\n';
+
+    int id;
+    std::cout << "\nEnter admin ID to demote: ";
+    std::cin  >> id;
+
+    if (id == loggedUser.id) {
+        std::cout << "You cannot demote yourself while logged in.\n";
+        return;
+    }
+
+    if (changeUserRole(id, "user"))
+        std::cout << "Demotion successful.\n";
+    else
+        std::cout << "Demotion failed.\n";
+}

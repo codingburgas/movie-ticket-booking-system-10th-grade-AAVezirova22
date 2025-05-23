@@ -5,6 +5,9 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
-void loginUser();
+#include <optional>
+#include "user.h"
 
-#endif //LOGIN_H
+std::optional<User> loginUser();
+
+#endif

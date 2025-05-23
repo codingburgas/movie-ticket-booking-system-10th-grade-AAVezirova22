@@ -5,6 +5,6 @@
 #ifndef REGISTER_H
 #define REGISTER_H
 
-void registerUser();
+bool registerUser();
 
 #endif //REGISTER_H

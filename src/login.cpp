@@ -1,8 +1,9 @@
 #include <iostream>
 #include <limits>
 #include "../include/db.h"
+#include "../include/login.h"
 
-void loginUser()
+std::optional<User> loginUser()
 {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -14,23 +15,19 @@ void loginUser()
     std::getline(std::cin, password);
 
     try {
-        auto session = createSession();
-        auto schema  = session->getSchema("TicketBookingSystem");
-        auto users   = schema.getTable("users");
+        auto user = tryLogin(username, password);
 
-        auto res = users
-            .select("username")
-            .where("username = :u AND password = :p")
-            .bind("u", username)
-            .bind("p", password)
-            .execute();
-
-        if (res.count() > 0)
-            std::cout << "Login successful. Welcome, " << username << "!\n";
-        else
+        if (user) {
+            std::cout << "Login successful. Welcome, "
+                      << user->username << "!\n";
+        } else {
             std::cout << "Invalid username or password.\n";
+        }
+
+        return user;
     }
     catch (const mysqlx::Error& e) {
         std::cerr << "Login failed: " << e.what() << '\n';
+        return std::nullopt;
     }
 }

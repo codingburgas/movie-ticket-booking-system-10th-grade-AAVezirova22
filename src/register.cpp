@@ -1,8 +1,9 @@
 #include <iostream>
 #include <limits>
 #include "../include/db.h"
+#include "../include/register.h"
 
-void registerUser()
+bool registerUser()
 {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -16,21 +17,16 @@ void registerUser()
     std::getline(std::cin, password);
 
     try {
-        auto session = createSession();
-        auto schema  = session->getSchema("TicketBookingSystem");
-        auto users   = schema.getTable("users");
-
-        auto res = users
-            .insert("username", "email", "password")
-            .values(username, email, password)
-            .execute();
-
-        if (res.getAffectedItemsCount() == 1)
+        if (registerNewUser(username, email, password)) {
             std::cout << "User registered successfully.\n";
-        else
+            return true;
+        } else {
             std::cout << "Nothing inserted – check your data.\n";
+            return false;
+        }
     }
     catch (const mysqlx::Error& e) {
         std::cerr << "Registration failed: " << e.what() << '\n';
+        return false;
     }
 }
