@@ -85,17 +85,17 @@ void Menu::displayMainMenu()
                 registerUser();
                 break;
             case 3:
-                std::cout << "\n[viewMovies() not implemented yet]\n";
+                std::cout << std::endl << "[viewMovies() not implemented yet]" << std::endl;
                 break;
             case 4:
-                std::cout << "\nExiting… Bye!\n";
+                std::cout << std::endl << "Exiting… Bye!" << std::endl;
                 return;
             default:
-                std::cout << "\nInvalid input. Please try again!\n";
+                std::cout << std::endl << "Invalid input. Please try again!" << std::endl;
                 break;
         }
 
-        std::cout << "\nPress <Enter> to continue…";
+        std::cout << std::endl << "Press <Enter> to continue…";
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cin.get();
     }
@@ -111,13 +111,13 @@ void Menu::displayUserMenu(const User&)
 
     switch (choice) {
         case 1:
-            std::cout << "\n[viewMovies() not implemented yet]\n";
+            std::cout << std::endl << "[viewMovies() not implemented yet]" << std::endl;
             break;
         case 2:
-            std::cout << "\nLogging out…\n";
+            std::cout << std::endl << "Logging out..." << std::endl;
             return;
         default:
-            std::cout << "Invalid input. Please try again!\n";
+            std::cout << "Invalid input. Please try again!" << std::endl;
             break;
     }
 }
@@ -140,20 +140,18 @@ void Menu::displayAdminMenu(const User& currentUser)
         }
 
         switch (choice) {
-            case 1: promoteUser(); break;
-            case 2: demoteUser (); break;
-            case 3:
-                std::cout << "\n[addCinemaOrMovie() not implemented yet]\n";
-                break;
-            case 4:
-                std::cout << "\nLogging out…\n";
-                return;
-            default:
-                std::cout << "\nInvalid input. Please try again!\n";
-                break;
+            case 1: promoteUser();      break;
+            case 2: demoteUser();       break;
+            case 3: addCinemaMenu();    break;
+            case 4: addHallMenu();      break;
+            case 5: addMovieMenu();     break;
+            case 6: listCinemasMenu();  break;
+            case 7: listMoviesMenu();   break;
+            case 8: std::cout << std::endl <<  "Logging out…" << std::endl;; return;
+            default: std::cout << std::endl << "Invalid input. Please try again!" << std::endl;; break;
         }
 
-        std::cout << "\nPress <Enter> to continue…";
+        std::cout << std::endl << "Press <Enter> to continue…";
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cin.get();
     }
@@ -164,47 +162,127 @@ void Menu::promoteUser()
 {
     auto users = fetchAllUsers();
 
-    std::cout << "\nCurrent users:\n";
+    std::cout << std::endl << "Current users:" << std::endl;
     std::cout << "ID  Username        Role\n";
-    std::cout << "---------------------------------\n";
+    std::cout << "---------------------------------" << std::endl;
     for (const auto& u : users)
         std::cout << std::left << std::setw(4)  << u.id
                   << std::setw(16) << u.username
                   << u.role << '\n';
 
     int id;
-    std::cout << "\nEnter user ID to promote: ";
+    std::cout << std::endl << "Enter user ID to promote: ";
     std::cin  >> id;
 
     if (changeUserRole(id, "admin"))
-        std::cout << "Promotion successful.\n";
+        std::cout << "Promotion successful." << std::endl;
     else
-        std::cout << "Promotion failed.\n";
+        std::cout << "Promotion failed." << std::endl;
 }
 
 void Menu::demoteUser()
 {
     auto users = fetchAllUsers();
 
-    std::cout << "\nCurrent admins:\n";
-    std::cout << "ID  Username\n";
-    std::cout << "----------------------\n";
+    std::cout << std::endl << "Current admins:" << std::endl;
+    std::cout << "ID  Username" << std::endl;
+    std::cout << "----------------------" << std::endl;
     for (const auto& u : users)
         if (u.isAdmin())
             std::cout << std::left << std::setw(4) << u.id
                       << u.username << '\n';
 
     int id;
-    std::cout << "\nEnter admin ID to demote: ";
+    std::cout << std::endl << "Enter admin ID to demote: ";
     std::cin  >> id;
 
     if (id == loggedUser.id) {
-        std::cout << "You cannot demote yourself while logged in.\n";
+        std::cout << "You cannot demote yourself while logged in." << std::endl;
         return;
     }
 
     if (changeUserRole(id, "user"))
-        std::cout << "Demotion successful.\n";
+        std::cout << "Demotion successful." << std::endl;
     else
-        std::cout << "Demotion failed.\n";
+        std::cout << "Demotion failed." << std::endl;
+}
+
+void Menu::addCinemaMenu()
+{
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::string name, city;
+
+    std::cout << std::endl << "Cinema name: "; std::getline(std::cin, name);
+    std::cout << "City: "; std::getline(std::cin, city);
+
+    if (addCinema(name, city))
+        std::cout << "Cinema added" << std::endl;
+    else
+        std::cout << "Failed to add cinema" << std::endl;
+}
+
+void Menu::addHallMenu()
+{
+    int cinemaId, seats, rows;
+    std::string hallName;
+
+    auto cinemas = fetchAllCinemas();
+    if (cinemas.empty()) { std::cout << "No cinemas yet." << std::endl; return; }
+
+    std::cout << std::endl << "Current cinemas:" << std::endl;
+    for (auto& c : cinemas)
+        std::cout << c.id << " — " << c.name << " (" << c.city << ")\n";
+
+    std::cout << "Cinema ID to attach hall to: "; std::cin >> cinemaId;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "Hall name: "; std::getline(std::cin, hallName);
+    std::cout << "Seats per row: "; std::cin >> seats;
+    std::cout << "Row count: "; std::cin >> rows;
+
+    if (addHall(cinemaId, hallName, seats, rows))
+        std::cout << "Hall added." << std::endl;
+    else
+        std::cout << "Failed to add hall." << std::endl;
+}
+
+void Menu::addMovieMenu()
+{
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::string title, language, genre, date;
+    int duration;
+
+    std::cout << std::endl << "Title: "; std::getline(std::cin, title);
+    std::cout << "Language: "; std::getline(std::cin, language);
+    std::cout << "Genre: "; std::getline(std::cin, genre);
+    std::cout << "Release date (YYYY-MM-DD): "; std::getline(std::cin, date);
+    std::cout << "Duration (min): "; std::cin  >> duration;
+
+    if (addMovie(title, language, genre, date, duration))
+        std::cout << "Movie added." << std::endl;
+    else
+        std::cout << "Failed to add movie." << std::endl;
+}
+
+void Menu::listCinemasMenu()
+{
+    auto cinemas = fetchAllCinemas();
+    if (cinemas.empty()) { std::cout << "No cinemas." << std::endl; return; }
+
+    std::cout << std::endl << "ID  Name (City)\n---------------------------" << std::endl;
+    for (auto& c : cinemas)
+        std::cout << c.id << "  " << c.name << " (" << c.city << ")" << std::endl;
+}
+
+
+void Menu::listMoviesMenu()
+{
+    auto movies = fetchAllMovies();
+    if (movies.empty()) { std::cout << "No movies." << std::endl; return; }
+
+    std::cout << std::endl << "ID  Title — Genre — Language — Release" << std::endl;
+    std::cout << "----------------------------------------------" << std::endl;
+    for (auto& m : movies)
+        std::cout << m.id << "  " << m.title << " — "
+                  << m.genre << " — " << m.language
+                  << " — " << m.releaseDate << '\n';
 }

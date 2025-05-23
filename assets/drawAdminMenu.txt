@@ -4,8 +4,12 @@
 |                                                                        |
 |                        1. Promote user to admin                        |
 |                        2. Demote admin to user                         |
-|                        3. Add cinema / movie TO DO                     |
-|                        4. Logout                                       |
+|                        3. Add cinema                                   |
+|                        4. Add hall                                     |
+|                        5. Add movie                                    |
+|                        6. List cinemas                                 |
+|                        7. List movies                                  |
+|                        8. Logout                                       |
 |                                                                        |
 ==========================================================================
 Enter your choice:

@@ -26,6 +26,12 @@ private:
     void promoteUser();
     void demoteUser();
 
+    void addCinemaMenu();
+    void addHallMenu();
+    void addMovieMenu();
+    void listCinemasMenu();
+    void listMoviesMenu();
+
     int  choice = 0;
     bool hasUpper = false;
     bool hasDigit = false;
