@@ -18,8 +18,7 @@ std::optional<User> loginUser()
         auto user = tryLogin(username, password);
 
         if (user) {
-            std::cout << "Login successful. Welcome, "
-                      << user->username << "!\n";
+            std::cout << "Login successful. Welcome, " << user->username << "!\n";
         } else {
             std::cout << "Invalid username or password.\n";
         }

@@ -7,9 +7,11 @@
 |                        3. Add cinema                                   |
 |                        4. Add hall                                     |
 |                        5. Add movie                                    |
-|                        6. List cinemas                                 |
-|                        7. List movies                                  |
-|                        8. Logout                                       |
+|                        6. Add showtime                                 |
+|                        7. List cinemas                                 |
+|                        8. List movies                                  |
+|                        9. List showtimes                               |
+|                       10. Logout                                       |
 |                                                                        |
 ==========================================================================
 Enter your choice:

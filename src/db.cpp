@@ -1,75 +1,77 @@
 #include "../include/db.h"
-#include <stdexcept>
 #include <iostream>
 
-namespace {
-    std::shared_ptr<mysqlx::Session> make_shared(mysqlx::Session* sess) {
+namespace
+{
+    std::shared_ptr<mysqlx::Session> make_shared(mysqlx::Session* sess)
+    {
         return std::shared_ptr<mysqlx::Session>(sess,
-            [](mysqlx::Session* p){ try { delete p; } catch(...) {} });
+            [](mysqlx::Session* p)
+            {
+                try { delete p; }
+                catch (...) {}
+            });
     }
 }
 
 std::shared_ptr<mysqlx::Session> createSession()
 {
-    auto *sess = new mysqlx::Session("127.0.0.1", 33060, "root", "admin");
+    auto* sess = new mysqlx::Session("127.0.0.1", 33060, "root", "admin");
     sess->sql("USE TicketBookingSystem").execute();
     return make_shared(sess);
 }
 
-
-std::optional<User> tryLogin(const std::string& username,
-                             const std::string& password)
+std::optional<User> tryLogin(const std::string& username, const std::string& password)
 {
     auto session = createSession();
-    auto users   = session->getSchema("TicketBookingSystem").getTable("users");
+    auto table   = session->getSchema("TicketBookingSystem").getTable("users");
 
-    auto res = users
-        .select("id", "username", "email", "role")
-        .where("username = :u AND password = :p")
-        .bind("u", username)
-        .bind("p", password)
-        .execute();
+    auto res = table.select("id", "username", "email", "role")
+                    .where("username = :u AND password = :p")
+                    .bind("u", username)
+                    .bind("p", password)
+                    .execute();
 
-    if (res.count() == 0) return std::nullopt;
+    if (res.count() == 0)
+    {
+        return std::nullopt;
+    }
 
-    auto row = res.fetchOne();
+    mysqlx::Row row = res.fetchOne();
 
-    return User{
-        row[0].get<int>(),
-        row[1].get<std::string>(),
-        row[2].get<std::string>(),
-        row[3].get<std::string>()
-    };
+    return User{ row[0].get<int>(),
+                 row[1].get<std::string>(),
+                 row[2].get<std::string>(),
+                 row[3].get<std::string>() };
 }
 
-bool registerNewUser(const std::string& username,
-                     const std::string& email,
-                     const std::string& password)
+bool registerNewUser(const std::string& username, const std::string& email, const std::string& password)
 {
     auto session = createSession();
-    auto users   = session->getSchema("TicketBookingSystem").getTable("users");
+    auto table   = session->getSchema("TicketBookingSystem").getTable("users");
 
-    auto res = users
-        .insert("username", "email", "password", "role")
-        .values(username, email, password, "user")
-        .execute();
+    auto res = table.insert("username", "email", "password", "role")
+                    .values(username, email, password, "user")
+                    .execute();
 
     return res.getAffectedItemsCount() == 1;
 }
 
 bool changeUserRole(int userId, const std::string& newRole)
 {
-    if (newRole != "user" && newRole != "admin") return false;
+    if (newRole != "user" && newRole != "admin")
+    {
+        return false;
+    }
 
     auto session = createSession();
-    auto users   = session->getSchema("TicketBookingSystem").getTable("users");
+    auto table   = session->getSchema("TicketBookingSystem").getTable("users");
 
-    auto res = users
-        .update()
-        .set("role", newRole)
-        .where("id = :id")
-        .bind("id", userId)
-        .execute();
+    auto res = table.update()
+                    .set("role", newRole)
+                    .where("id = :i")
+                    .bind("i", userId)
+                    .execute();
 
     return res.getAffectedItemsCount() == 1;
 }
@@ -79,136 +81,227 @@ std::vector<User> fetchAllUsers()
     std::vector<User> list;
 
     auto session = createSession();
-    auto users   = session->getSchema("TicketBookingSystem").getTable("users");
+    auto table   = session->getSchema("TicketBookingSystem").getTable("users");
 
-    auto res = users.select("id", "username", "email", "role").execute();
-    for (mysqlx::Row row : res)
-        list.push_back( User{
-            row[0].get<int>(),
-            row[1].get<std::string>(),
-            row[2].get<std::string>(),
-            row[3].get<std::string>()
-        });
+    auto res = table.select("id", "username", "email", "role").execute();
+
+    for (mysqlx::Row r : res)
+    {
+        list.push_back(
+            { r[0].get<int>(),
+              r[1].get<std::string>(),
+              r[2].get<std::string>(),
+              r[3].get<std::string>() });
+    }
 
     return list;
 }
 
 bool addCinema(const std::string& name, const std::string& city)
 {
-    auto s = createSession();
-    auto t = s->getSchema("TicketBookingSystem").getTable("cinema");
+    auto session = createSession();
+    auto table   = session->getSchema("TicketBookingSystem").getTable("cinema");
 
-    return t.insert("name","city")
-            .values(name, city)
-            .execute()
-            .getAffectedItemsCount() == 1;
+    auto res = table.insert("name", "city")
+                    .values(name, city)
+                    .execute();
+
+    return res.getAffectedItemsCount() == 1;
 }
 
 bool deleteCinema(int id)
 {
-    auto s = createSession();
-    auto t = s->getSchema("TicketBookingSystem").getTable("cinema");
+    auto session = createSession();
+    auto table   = session->getSchema("TicketBookingSystem").getTable("cinema");
 
-    return t.remove()
-            .where("id = :id")
-            .bind("id", id)
-            .execute()
-            .getAffectedItemsCount() == 1;
+    auto res = table.remove()
+                    .where("id = :i")
+                    .bind("i", id)
+                    .execute();
+
+    return res.getAffectedItemsCount() == 1;
 }
 
 std::vector<Cinema> fetchAllCinemas()
 {
     std::vector<Cinema> list;
-    auto s = createSession();
-    auto res = s->getSchema("TicketBookingSystem")
-                .getTable("cinema")
-                .select("id","name","city")
-                .execute();
+
+    auto session = createSession();
+    auto res = session->getSchema("TicketBookingSystem")
+                      .getTable("cinema")
+                      .select("id", "name", "city")
+                      .execute();
 
     for (mysqlx::Row r : res)
-        list.push_back({ r[0].get<int>(), r[1].get<std::string>(),
-                         r[2].get<std::string>() });
+    {
+        list.push_back(
+            { r[0].get<int>(),
+              r[1].get<std::string>(),
+              r[2].get<std::string>() });
+    }
+
     return list;
 }
 
-bool addHall(int cinemaId, const std::string& name,
-             int seatsPerRow, int rowCount)
+bool addHall(int cinemaId, const std::string& name, int seatsPerRow, int rowCount)
 {
-    auto s = createSession();
-    auto t = s->getSchema("TicketBookingSystem").getTable("hall");
+    auto session = createSession();
+    auto table   = session->getSchema("TicketBookingSystem").getTable("hall");
 
-    return t.insert("cinema_id","name","seats_per_row","row_count")
-            .values(cinemaId, name, seatsPerRow, rowCount)
-            .execute()
-            .getAffectedItemsCount() == 1;
+    auto res = table.insert("cinema_id", "name", "seats_per_row", "row_count")
+                    .values(cinemaId, name, seatsPerRow, rowCount)
+                    .execute();
+
+    return res.getAffectedItemsCount() == 1;
 }
 
 bool deleteHall(int hallId)
 {
-    auto s = createSession();
-    auto t = s->getSchema("TicketBookingSystem").getTable("hall");
+    auto session = createSession();
+    auto table   = session->getSchema("TicketBookingSystem").getTable("hall");
 
-    return t.remove().where("id = :id")
-            .bind("id", hallId)
-            .execute()
-            .getAffectedItemsCount() == 1;
+    auto res = table.remove()
+                    .where("id = :i")
+                    .bind("i", hallId)
+                    .execute();
+
+    return res.getAffectedItemsCount() == 1;
 }
 
 std::vector<Hall> fetchHallsByCinema(int cinemaId)
 {
     std::vector<Hall> list;
-    auto s = createSession();
-    auto res = s->getSchema("TicketBookingSystem")
-                .getTable("hall")
-                .select("id","cinema_id","name","seats_per_row","row_count")
-                .where("cinema_id = :cid")
-                .bind("cid", cinemaId)
-                .execute();
+
+    auto session = createSession();
+    auto res = session->getSchema("TicketBookingSystem")
+                      .getTable("hall")
+                      .select("id",
+                              "cinema_id",
+                              "name",
+                              "seats_per_row",
+                              "row_count")
+                      .where("cinema_id = :c")
+                      .bind("c", cinemaId)
+                      .execute();
 
     for (mysqlx::Row r : res)
-        list.push_back({ r[0].get<int>(),  r[1].get<int>(),
-                         r[3].get<int>(),  r[4].get<int>(),
-                         r[2].get<std::string>() });
+    {
+        list.push_back(
+            { r[0].get<int>(),
+              r[1].get<int>(),
+              r[2].get<std::string>(),
+              r[3].get<int>(),
+              r[4].get<int>() });
+    }
+
     return list;
 }
 
-bool addMovie(const std::string& title, const std::string& language,
-              const std::string& genre, const std::string& releaseDate,
-              int durationMin)
+bool addMovie(const std::string& title, const std::string& language, const std::string& genre, const std::string& releaseDate, int durationMin)
 {
-    auto s = createSession();
-    auto t = s->getSchema("TicketBookingSystem").getTable("movie");
+    auto session = createSession();
+    auto table   = session->getSchema("TicketBookingSystem").getTable("movie");
 
-    return t.insert("title","language","genre","release_date","duration_min")
-            .values(title, language, genre, releaseDate, durationMin)
-            .execute()
-            .getAffectedItemsCount() == 1;
+    auto res = table.insert("title",
+                            "language",
+                            "genre",
+                            "release_date",
+                            "duration_min")
+                    .values(title, language, genre, releaseDate, durationMin)
+                    .execute();
+
+    return res.getAffectedItemsCount() == 1;
 }
 
 bool deleteMovie(int movieId)
 {
-    auto s = createSession();
-    auto t = s->getSchema("TicketBookingSystem").getTable("movie");
+    auto session = createSession();
+    auto table   = session->getSchema("TicketBookingSystem").getTable("movie");
 
-    return t.remove().where("id = :id")
-            .bind("id", movieId)
-            .execute()
-            .getAffectedItemsCount() == 1;
+    auto res = table.remove()
+                    .where("id = :i")
+                    .bind("i", movieId)
+                    .execute();
+
+    return res.getAffectedItemsCount() == 1;
 }
 
 std::vector<Movie> fetchAllMovies()
 {
     std::vector<Movie> list;
-    auto s = createSession();
-    auto res = s->getSchema("TicketBookingSystem")
-                .getTable("movie")
-                .select("id","title","language","genre",
-                        "DATE_FORMAT(release_date,'%Y-%m-%d')")
-                .execute();
+
+    auto session = createSession();
+    auto res = session->getSchema("TicketBookingSystem")
+                      .getTable("movie")
+                      .select("id",
+                              "title",
+                              "language",
+                              "genre",
+                              "DATE_FORMAT(release_date,'%Y-%m-%d')")
+                      .execute();
 
     for (mysqlx::Row r : res)
-        list.push_back({ r[0].get<int>(),  r[1].get<std::string>(),
-                         r[2].get<std::string>(), r[3].get<std::string>(),
-                         r[4].get<std::string>() });
+    {
+        list.push_back(
+            { r[0].get<int>(),
+              r[1].get<std::string>(),
+              r[2].get<std::string>(),
+              r[3].get<std::string>(),
+              r[4].get<std::string>() });
+    }
+
+    return list;
+}
+
+bool addShowtime(int hallId, int movieId, const std::string& startISO, double price)
+{
+    auto session = createSession();
+    auto table   = session->getSchema("TicketBookingSystem").getTable("showtime");
+
+    auto res = table.insert("hall_id", "movie_id", "start_time", "price")
+                    .values(hallId, movieId, startISO, price)
+                    .execute();
+
+    return res.getAffectedItemsCount() == 1;
+}
+
+bool deleteShowtime(int showId)
+{
+    auto session = createSession();
+    auto table   = session->getSchema("TicketBookingSystem").getTable("showtime");
+
+    auto res = table.remove()
+                    .where("id = :i")
+                    .bind("i", showId)
+                    .execute();
+
+    return res.getAffectedItemsCount() == 1;
+}
+
+std::vector<Showtime> fetchShowtimesByCinema(int cinemaId)
+{
+    std::vector<Showtime> list;
+
+    auto session = createSession();
+
+    auto res = session->sql(
+    "SELECT st.id, st.hall_id, st.movie_id, "
+    "       st.start_time, st.price "
+    "FROM   showtime st "
+    "JOIN   hall h ON h.id = st.hall_id "
+    "WHERE  h.cinema_id = :cid "
+    "ORDER  BY st.start_time")
+    .bind("cid", cinemaId)
+    .execute();
+
+    for (const mysqlx::Row& r : res)
+    {
+        list.push_back(
+            { r[0].get<int>(),
+              r[1].get<int>(),
+              r[2].get<int>(),
+              r[3].get<std::string>(),
+              r[4].get<double>() });
+    }
     return list;
 }

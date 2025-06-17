@@ -4,13 +4,12 @@
 #include <string>
 #include "user.h"
 
-class Menu {
+class Menu
+{
 public:
     void displayMainMenu();
-
     void displayLogin();
     void displayRegister();
-
     void drawTeamName();
     void drawRegister();
     void drawMainMenu();
@@ -18,7 +17,7 @@ public:
     void drawAdminMenu();
 
 private:
-    void displayUserMenu (const User& currentUser);
+    void displayUserMenu(const User& currentUser);
     void displayAdminMenu(const User& currentUser);
 
     static void clearScreen();
@@ -29,19 +28,16 @@ private:
     void addCinemaMenu();
     void addHallMenu();
     void addMovieMenu();
+    void addShowtimeMenu();
+
     void listCinemasMenu();
     void listMoviesMenu();
+    void listShowtimesMenu();
 
-    int  choice = 0;
-    bool hasUpper = false;
-    bool hasDigit = false;
-    bool hasSpecialChar = false;
-    bool passLength = false;
-
+    int         choice      = 0;
     std::string username;
     std::string password;
-
-    User loggedUser{};
+    User        loggedUser{};
 };
 
 #endif
