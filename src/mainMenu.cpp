@@ -488,7 +488,6 @@ void Menu::listMoviesMenu()
 void Menu::listShowtimesMenu()
 {
     std::vector<Cinema> cinemas = fetchAllCinemas();
-
     if (cinemas.empty())
     {
         std::cout << "No cinemas." << std::endl;
@@ -496,28 +495,61 @@ void Menu::listShowtimesMenu()
     }
 
     for (const Cinema& c : cinemas)
-    {
         std::cout << c.id << " — " << c.name << std::endl;
-    }
 
-    int cinemaId{};
+    int cinemaId {};
     std::cout << "Cinema ID: ";
-    std::cin >> cinemaId;
+    std::cin  >> cinemaId;
 
     std::vector<Showtime> shows = fetchShowtimesByCinema(cinemaId);
-
     if (shows.empty())
     {
         std::cout << "No showtimes for this cinema." << std::endl;
         return;
     }
 
+    std::vector<Movie> movies = fetchAllMovies();
+    std::unordered_map<int, std::string> idToTitle;
+    for (const Movie& m : movies) idToTitle[m.id] = m.title;
+
+    struct MovieBlock
+    {
+        std::vector<std::string> times;
+        double                   price {};
+    };
+    std::map<std::string, MovieBlock> listing;
+
     for (const Showtime& s : shows)
     {
-        std::cout << s.id << "  Hall "  << s.hallId
-                  << "  Movie "         << s.movieId
-                  << "  "               << s.startISO
-                  << "  " << std::fixed << std::setprecision(2)
-                  << s.price << std::endl;
+        auto it = idToTitle.find(s.movieId);
+        if (it == idToTitle.end()) continue;
+
+        std::string title = it->second;
+
+        std::string time;
+        std::size_t pos = s.startISO.find(' ');
+        if (pos != std::string::npos && pos + 6 <= s.startISO.size())
+            time = s.startISO.substr(pos + 1, 5);
+        else
+            time = s.startISO;
+
+        listing[title].times.push_back(time);
+        listing[title].price = s.price;
+    }
+
+    std::cout << std::endl;
+    for (const auto& [title, block] : listing)
+    {
+        std::cout << title << ": ";
+
+        for (std::size_t i = 0; i < block.times.size(); ++i)
+        {
+            std::cout << block.times[i];
+            if (i + 1 < block.times.size()) std::cout << ", ";
+        }
+        std::cout << std::endl
+                  << "Price: "
+                  << std::fixed << std::setprecision(2)
+                  << block.price << std::endl << std::endl;
     }
 }

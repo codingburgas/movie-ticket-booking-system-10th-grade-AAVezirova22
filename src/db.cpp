@@ -1,6 +1,7 @@
 #include "../include/db.h"
 #include <iostream>
 
+
 namespace
 {
     std::shared_ptr<mysqlx::Session> make_shared(mysqlx::Session* sess)
@@ -285,13 +286,14 @@ std::vector<Showtime> fetchShowtimesByCinema(int cinemaId)
     auto session = createSession();
 
     auto res = session->sql(
-    "SELECT st.id, st.hall_id, st.movie_id, "
-    "       st.start_time, st.price "
-    "FROM   showtime st "
-    "JOIN   hall h ON h.id = st.hall_id "
-    "WHERE  h.cinema_id = :cid "
-    "ORDER  BY st.start_time")
-    .bind("cid", cinemaId)
+        "SELECT st.id, st.hall_id, st.movie_id, "
+        "       DATE_FORMAT(st.start_time, '%H:%i') AS hhmm, "
+        "       st.price "
+        "FROM   showtime st "
+        "JOIN   hall h ON h.id = st.hall_id "
+        "WHERE  h.cinema_id = ? "
+        "ORDER  BY st.start_time")
+    .bind(cinemaId)
     .execute();
 
     for (const mysqlx::Row& r : res)
