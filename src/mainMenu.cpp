@@ -43,7 +43,7 @@ void Menu::drawMainMenu()
 void Menu::drawUserMenu()
 {
     std::ifstream file("../assets/drawUserMenu.txt");
-    std::string   line;
+    std::string line;
 
     while (std::getline(file, line))
     {
@@ -139,7 +139,7 @@ void Menu::displayUserMenu(const User&)
     {
         case 1:
         {
-            std::cout << std::endl << "viewMovies not implemented yet" << std::endl;
+            viewMoviesMenu();
             break;
         }
         case 2:
@@ -542,6 +542,65 @@ void Menu::listShowtimesMenu()
     {
         std::cout << title << ": ";
 
+        for (std::size_t i = 0; i < block.times.size(); ++i)
+        {
+            std::cout << block.times[i];
+            if (i + 1 < block.times.size()) std::cout << ", ";
+        }
+        std::cout << std::endl
+                  << "Price: "
+                  << std::fixed << std::setprecision(2)
+                  << block.price << std::endl << std::endl;
+    }
+}
+
+void Menu::viewMoviesMenu()
+{
+    std::vector<Cinema> cinemas = fetchAllCinemas();
+    if (cinemas.empty())
+    {
+        std::cout << "No cinemas available." << std::endl;
+        return;
+    }
+
+    std::cout << std::endl << "Cinemas:" << std::endl;
+    for (const Cinema& c : cinemas)
+        std::cout << c.id << " — " << c.name << std::endl;
+
+    int cinemaId {};
+    std::cout << "Cinema ID: ";
+    std::cin  >> cinemaId;
+
+    std::vector<Showtime> shows = fetchShowtimesByCinema(cinemaId);
+    if (shows.empty())
+    {
+        std::cout << "No showtimes for this cinema." << std::endl;
+        return;
+    }
+
+    std::vector<Movie> movies = fetchAllMovies();
+    std::unordered_map<int, std::string> idToTitle;
+    for (const Movie& m : movies)
+        idToTitle[m.id] = m.title;
+
+    struct MovieBlock
+    {
+        std::vector<std::string> times;
+        double price {};
+    };
+    std::map<std::string, MovieBlock> listing;
+
+    for (const Showtime& s : shows)
+    {
+        std::string title = idToTitle[s.movieId];
+        listing[title].times.push_back(s.startISO);
+        listing[title].price = s.price;
+    }
+
+    std::cout << std::endl;
+    for (const auto& [title, block] : listing)
+    {
+        std::cout << title << ": ";
         for (std::size_t i = 0; i < block.times.size(); ++i)
         {
             std::cout << block.times[i];

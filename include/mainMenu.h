@@ -34,6 +34,8 @@ private:
     void listMoviesMenu();
     void listShowtimesMenu();
 
+    void viewMoviesMenu();
+
     int         choice      = 0;
     std::string username;
     std::string password;
