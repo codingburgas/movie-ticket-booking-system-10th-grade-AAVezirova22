@@ -307,3 +307,55 @@ std::vector<Showtime> fetchShowtimesByCinema(int cinemaId)
     }
     return list;
 }
+
+bool updateCinema(int id, const std::string& name, const std::string& city)
+{
+    auto s = createSession();
+    auto t = s->getSchema("TicketBookingSystem").getTable("cinema");
+
+    return t.update()
+            .set("name", name)
+            .set("city", city)
+            .where("id = :i").bind("i", id)
+            .execute().getAffectedItemsCount() == 1;
+}
+
+bool updateHall(int id, const std::string& name, int seatsPerRow, int rowCount)
+{
+    auto s = createSession();
+    auto t = s->getSchema("TicketBookingSystem").getTable("hall");
+
+    return t.update()
+            .set("name", name)
+            .set("seats_per_row", seatsPerRow)
+            .set("row_count", rowCount)
+            .where("id = :i").bind("i", id)
+            .execute().getAffectedItemsCount() == 1;
+}
+
+bool updateMovie(int id, const std::string& title, const std::string& language, const std::string& genre, const std::string& releaseDate, int durationMin)
+{
+    auto s = createSession();
+    auto t = s->getSchema("TicketBookingSystem").getTable("movie");
+
+    return t.update()
+            .set("title", title)
+            .set("language", language)
+            .set("genre", genre)
+            .set("release_date", releaseDate)
+            .set("duration_min", durationMin)
+            .where("id = :i").bind("i", id)
+            .execute().getAffectedItemsCount() == 1;
+}
+
+bool updateShowtime(int id, const std::string& startISO, double price)
+{
+    auto s = createSession();
+    auto t = s->getSchema("TicketBookingSystem").getTable("showtime");
+
+    return t.update()
+            .set("start_time", startISO)
+            .set("price", price)
+            .where("id = :i").bind("i", id)
+            .execute().getAffectedItemsCount() == 1;
+}

@@ -36,6 +36,16 @@ private:
 
     void viewMoviesMenu();
 
+    void editCinemaMenu();
+    void editHallMenu();
+    void editMovieMenu();
+    void editShowtimeMenu();
+
+    void deleteCinemaMenu();
+    void deleteHallMenu();
+    void deleteMovieMenu();
+    void deleteShowtimeMenu();
+
     int         choice      = 0;
     std::string username;
     std::string password;

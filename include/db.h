@@ -70,4 +70,12 @@ bool addShowtime(int hallId, int movieId, const std::string& startISO, double pr
 bool deleteShowtime(int showId);
 std::vector<Showtime> fetchShowtimesByCinema(int cinemaId);
 
+bool updateCinema(int id, const std::string& name, const std::string& city);
+
+bool updateHall(int id, const std::string& name, int seatsPerRow, int rowCount);
+
+bool updateMovie(int id, const std::string& title, const std::string& language, const std::string& genre, const std::string& releaseDate, int durationMin);
+
+bool updateShowtime(int id, const std::string& startISO, double price);
+
 #endif

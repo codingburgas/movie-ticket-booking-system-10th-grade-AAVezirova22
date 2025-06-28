@@ -1,17 +1,25 @@
-==========================================================================
-|                               ADMIN  MENU                              |
-==========================================================================
-|                                                                        |
-|                        1. Promote user to admin                        |
-|                        2. Demote admin to user                         |
-|                        3. Add cinema                                   |
-|                        4. Add hall                                     |
-|                        5. Add movie                                    |
-|                        6. Add showtime                                 |
-|                        7. List cinemas                                 |
-|                        8. List movies                                  |
-|                        9. List showtimes                               |
-|                       10. Logout                                       |
-|                                                                        |
-==========================================================================
-Enter your choice:
+                        ==========================================================================
+                        |                               ADMIN  MENU                              |
+                        ==========================================================================
+                        |                                                                        |
+                        |                        1. Promote user to admin                        |
+                        |                        2. Demote admin to user                         |
+                        |                        3. Add cinema                                   |
+                        |                        4. Add hall                                     |
+                        |                        5. Add movie                                    |
+                        |                        6. Add showtime                                 |
+                        |                        7. List cinemas                                 |
+                        |                        8. List movies                                  |
+                        |                        9. List showtimes                               |
+                        |                        10.  Edit cinema                                |
+                        |                        11.  Edit hall                                  |
+                        |                        12.  Edit movie                                 |
+                        |                        13.  Edit showtime                              |
+                        |                        14.  Delete cinema                              |
+                        |                        15.  Delete hall                                |
+                        |                        16.  Delete movie                               |
+                        |                        17.  Delete showtime                            |
+                        |                        18.  Logout                                     |
+                        |                                                                        |
+                        ==========================================================================
+                        Enter your choice:

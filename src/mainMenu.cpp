@@ -186,7 +186,15 @@ void Menu::displayAdminMenu(const User& currentUser)
             case 7:  listCinemasMenu();    break;
             case 8:  listMoviesMenu();     break;
             case 9:  listShowtimesMenu();  break;
-            case 10:
+            case 10: editCinemaMenu();       break;
+            case 11: editHallMenu();         break;
+            case 12: editMovieMenu();        break;
+            case 13: editShowtimeMenu();     break;
+            case 14: deleteCinemaMenu();     break;
+            case 15: deleteHallMenu();       break;
+            case 16: deleteMovieMenu();      break;
+            case 17: deleteShowtimeMenu();   break;
+            case 18:
             {
                 std::cout << "Logging out..." << std::endl;
                 return;
@@ -611,4 +619,296 @@ void Menu::viewMoviesMenu()
                   << std::fixed << std::setprecision(2)
                   << block.price << std::endl << std::endl;
     }
+}
+
+void Menu::editCinemaMenu()
+{
+    listCinemasMenu();
+    int id {};
+    std::cout << "Cinema ID to edit: ";
+    std::cin  >> id;
+
+    std::vector<Cinema> cinemas = fetchAllCinemas();
+    auto it = std::find_if(cinemas.begin(), cinemas.end(),
+                           [id](const Cinema& c){ return c.id == id; });
+    if (it == cinemas.end())
+    {
+        std::cout << "Cinema not found." << std::endl;
+        return;
+    }
+
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    std::string name  = it->name;
+    std::string city  = it->city;
+    std::string input;
+
+    std::cout << "New name  [" << name << "]: ";
+    std::getline(std::cin, input);
+    if (!input.empty()) name = input;
+
+    std::cout << "New city  [" << city << "]: ";
+    std::getline(std::cin, input);
+    if (!input.empty()) city = input;
+
+    if (updateCinema(id, name, city))
+        std::cout << "Cinema updated." << std::endl;
+    else
+        std::cout << "Update failed." << std::endl;
+}
+
+void Menu::editHallMenu()
+{
+    listCinemasMenu();
+    int cinemaId {};
+    std::cout << "Cinema ID: ";
+    std::cin  >> cinemaId;
+
+    std::vector<Hall> halls = fetchHallsByCinema(cinemaId);
+    if (halls.empty())
+    {
+        std::cout << "No halls for that cinema." << std::endl;
+        return;
+    }
+
+    for (const Hall& h : halls)
+        std::cout << h.id << " — " << h.name << std::endl;
+
+    int id {};
+    std::cout << "Hall ID to edit: ";
+    std::cin  >> id;
+
+    auto it = std::find_if(halls.begin(), halls.end(),
+                           [id](const Hall& h){ return h.id == id; });
+    if (it == halls.end())
+    {
+        std::cout << "Hall not found." << std::endl;
+        return;
+    }
+
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    std::string name = it->name, input;
+    int seats = it->seatsPerRow;
+    int rows  = it->rowCount;
+
+    std::cout << "New name [" << name << "]: ";
+    std::getline(std::cin, input);
+    if (!input.empty()) name = input;
+
+    std::cout << "Seats per row [" << seats << "]: ";
+    std::getline(std::cin, input);
+    if (!input.empty()) seats = std::stoi(input);
+
+    std::cout << "Row count [" << rows << "]: ";
+    std::getline(std::cin, input);
+    if (!input.empty()) rows = std::stoi(input);
+
+    if (updateHall(id, name, seats, rows))
+        std::cout << "Hall updated." << std::endl;
+    else
+        std::cout << "Update failed." << std::endl;
+}
+
+void Menu::editMovieMenu()
+{
+    listMoviesMenu();
+    int id {};
+    std::cout << "Movie ID to edit: ";
+    std::cin  >> id;
+
+    std::vector<Movie> movies = fetchAllMovies();
+    auto it = std::find_if(movies.begin(), movies.end(),
+                           [id](const Movie& m){ return m.id == id; });
+    if (it == movies.end())
+    {
+        std::cout << "Movie not found." << std::endl;
+        return;
+    }
+
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    std::string title = it->title;
+    std::string lang  = it->language;
+    std::string genre = it->genre;
+    std::string date  = it->releaseDate;
+    int         dur   = 0;
+    try { dur = std::stoi(it->releaseDate); } catch (...) {}
+
+    std::string input;
+
+    std::cout << "New title [" << title << "]: ";
+    std::getline(std::cin, input);
+    if (!input.empty()) title = input;
+
+    std::cout << "New language [" << lang << "]: ";
+    std::getline(std::cin, input);
+    if (!input.empty()) lang = input;
+
+    std::cout << "New genre [" << genre << "]: ";
+    std::getline(std::cin, input);
+    if (!input.empty()) genre = input;
+
+    std::cout << "New release YYYY-MM-DD [" << date << "]: ";
+    std::getline(std::cin, input);
+    if (!input.empty()) date = input;
+
+    std::cout << "New duration min [" << it->releaseDate << "]: ";
+    std::getline(std::cin, input);
+    if (!input.empty()) dur = std::stoi(input);
+
+    if (updateMovie(id, title, lang, genre, date, dur))
+        std::cout << "Movie updated." << std::endl;
+    else
+        std::cout << "Update failed." << std::endl;
+}
+
+void Menu::editShowtimeMenu()
+{
+    std::vector<Cinema> cinemas = fetchAllCinemas();
+    if (cinemas.empty())
+    {
+        std::cout << "No cinemas." << std::endl;
+        return;
+    }
+    for (const Cinema& c : cinemas)
+        std::cout << c.id << " — " << c.name << std::endl;
+
+    int cinemaId{};
+    std::cout << "Cinema ID: ";
+    std::cin >> cinemaId;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    std::vector<Showtime> shows = fetchShowtimesByCinema(cinemaId);
+    if (shows.empty())
+    {
+        std::cout << "No showtimes for this cinema." << std::endl;
+        return;
+    }
+
+    std::vector<Movie> movies = fetchAllMovies();
+    std::unordered_map<int, std::string> idToTitle;
+    for (const Movie& m : movies) idToTitle[m.id] = m.title;
+
+    std::cout << std::endl << "ID  Title            Time  Price" << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
+    for (const Showtime& s : shows)
+    {
+        std::cout << std::left << std::setw(4)  << s.id
+                  << std::setw(16)              << idToTitle[s.movieId]
+                  << std::setw(6)               << s.startISO
+                  << std::fixed << std::setprecision(2)
+                  << s.price << std::endl;
+    }
+
+    int id{};
+    std::cout << std::endl << "Showtime ID to edit: ";
+    std::cin >> id;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    auto session = createSession();
+    auto row = session->sql(
+                   "SELECT DATE_FORMAT(start_time,'%Y-%m-%d %H:%i'), price "
+                   "FROM showtime WHERE id = ?")
+                   .bind(id).execute().fetchOne();
+
+    if (!row)
+    {
+        std::cout << "Showtime not found." << std::endl;
+        return;
+    }
+
+    std::string start = row[0].get<std::string>();
+    double      price = row[1].get<double>();
+    std::string input;
+
+    std::cout << "New start YYYY-MM-DD HH:MM [" << start << "]: ";
+    std::getline(std::cin, input);
+    if (!input.empty()) start = input;
+
+    std::cout << "New price [" << std::fixed << std::setprecision(2)
+              << price << "]: ";
+    std::getline(std::cin, input);
+    if (!input.empty()) price = std::stod(input);
+
+    if (updateShowtime(id, start, price))
+        std::cout << "Showtime updated." << std::endl;
+    else
+        std::cout << "Update failed." << std::endl;
+}
+
+
+void Menu::deleteCinemaMenu()
+{
+    listCinemasMenu();
+    int id; std::cout << "Cinema ID to delete: "; std::cin >> id;
+    if (deleteCinema(id)) std::cout << "Cinema deleted." << std::endl;
+    else std::cout << "Delete failed." << std::endl;
+}
+
+void Menu::deleteHallMenu()
+{
+    int cinemaId; listCinemasMenu();
+    std::cout << "Cinema ID: "; std::cin >> cinemaId;
+    std::vector<Hall> halls = fetchHallsByCinema(cinemaId);
+    for (const Hall& h : halls) std::cout << h.id << " — " << h.name << std::endl;
+    int id; std::cout << "Hall ID to delete: "; std::cin >> id;
+    if (deleteHall(id)) std::cout << "Hall deleted." << std::endl;
+    else std::cout << "Delete failed." << std::endl;
+}
+
+void Menu::deleteMovieMenu()
+{
+    listMoviesMenu();
+    int id; std::cout << "Movie ID to delete: "; std::cin >> id;
+    if (deleteMovie(id)) std::cout << "Movie deleted." << std::endl;
+    else std::cout << "Delete failed." << std::endl;
+}
+
+void Menu::deleteShowtimeMenu()
+{
+    std::vector<Cinema> cinemas = fetchAllCinemas();
+    if (cinemas.empty())
+    {
+        std::cout << "No cinemas." << std::endl;
+        return;
+    }
+    for (const Cinema& c : cinemas)
+        std::cout << c.id << " — " << c.name << std::endl;
+
+    int cinemaId{};
+    std::cout << "Cinema ID: ";
+    std::cin >> cinemaId;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    std::vector<Showtime> shows = fetchShowtimesByCinema(cinemaId);
+    if (shows.empty())
+    {
+        std::cout << "No showtimes for this cinema." << std::endl;
+        return;
+    }
+
+    std::vector<Movie> movies = fetchAllMovies();
+    std::unordered_map<int, std::string> idToTitle;
+    for (const Movie& m : movies) idToTitle[m.id] = m.title;
+
+    std::cout << std::endl << "ID  Title            Time  Price" << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
+    for (const Showtime& s : shows)
+    {
+        std::cout << std::left << std::setw(4)  << s.id
+                  << std::setw(16)              << idToTitle[s.movieId]
+                  << std::setw(6)               << s.startISO
+                  << std::fixed << std::setprecision(2)
+                  << s.price << std::endl;
+    }
+
+    int id{};
+    std::cout << std::endl << "Showtime ID to delete: ";
+    std::cin >> id;
+
+    if (deleteShowtime(id))
+        std::cout << "Showtime deleted." << std::endl;
+    else
+        std::cout << "Delete failed." << std::endl;
 }
