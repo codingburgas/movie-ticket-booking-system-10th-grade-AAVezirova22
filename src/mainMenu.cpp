@@ -103,8 +103,7 @@ void Menu::displayMainMenu()
             }
             case 3:
             {
-                std::cout << std::endl
-                          << "To do" << std::endl;
+                viewMoviesMenu();
                 break;
             }
             case 4:
@@ -570,54 +569,84 @@ void Menu::viewMoviesMenu()
         std::cout << "No cinemas available." << std::endl;
         return;
     }
-
-    std::cout << std::endl << "Cinemas:" << std::endl;
     for (const Cinema& c : cinemas)
         std::cout << c.id << " — " << c.name << std::endl;
 
     int cinemaId {};
     std::cout << "Cinema ID: ";
     std::cin  >> cinemaId;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    std::vector<Showtime> shows = fetchShowtimesByCinema(cinemaId);
-    if (shows.empty())
+    auto     now      = std::chrono::system_clock::now();
+    std::time_t tt    = std::chrono::system_clock::to_time_t(now);
+    std::tm     tmNow = *std::localtime(&tt);
+
+    std::ostringstream todayBuf;
+    todayBuf << std::put_time(&tmNow, "%Y-%m-%d");
+    std::string today = todayBuf.str();
+
+    std::string dateFilter = today;
+    std::cout << "Date to view [" << today << "] (YYYY-MM-DD): ";
+    std::string input;
+    std::getline(std::cin, input);
+    if (!input.empty()) dateFilter = input;
+
+    std::string sql;
+    if (dateFilter == today)
+        sql =
+            "SELECT m.title, DATE_FORMAT(st.start_time,'%H:%i'), st.price "
+            "FROM   showtime st "
+            "JOIN   hall h   ON h.id = st.hall_id "
+            "JOIN   movie m  ON m.id = st.movie_id "
+            "WHERE  h.cinema_id = ? "
+            "AND    DATE(st.start_time) = CURDATE() "
+            "AND    st.start_time > NOW() "
+            "ORDER  BY st.start_time";
+    else
+        sql =
+            "SELECT m.title, DATE_FORMAT(st.start_time,'%H:%i'), st.price "
+            "FROM   showtime st "
+            "JOIN   hall h   ON h.id = st.hall_id "
+            "JOIN   movie m  ON m.id = st.movie_id "
+            "WHERE  h.cinema_id = ? "
+            "AND    DATE(st.start_time) = ? "
+            "ORDER  BY st.start_time";
+
+    auto session = createSession();
+    mysqlx::SqlStatement stmt = session->sql(sql);
+    stmt.bind(cinemaId);
+    if (dateFilter != today) stmt.bind(dateFilter);
+    auto res = stmt.execute();
+
+    std::map<std::string, std::pair<std::vector<std::string>, double>> block;
+    for (const mysqlx::Row& r : res)
     {
-        std::cout << "No showtimes for this cinema." << std::endl;
+        std::string title = r[0].get<std::string>();
+        std::string time  = r[1].get<std::string>();
+        double      price = r[2].get<double>();
+        block[title].first.push_back(time);
+        block[title].second = price;
+    }
+
+    if (block.empty())
+    {
+        std::cout << "No upcoming showtimes for that day." << std::endl;
         return;
     }
 
-    std::vector<Movie> movies = fetchAllMovies();
-    std::unordered_map<int, std::string> idToTitle;
-    for (const Movie& m : movies)
-        idToTitle[m.id] = m.title;
-
-    struct MovieBlock
-    {
-        std::vector<std::string> times;
-        double price {};
-    };
-    std::map<std::string, MovieBlock> listing;
-
-    for (const Showtime& s : shows)
-    {
-        std::string title = idToTitle[s.movieId];
-        listing[title].times.push_back(s.startISO);
-        listing[title].price = s.price;
-    }
-
     std::cout << std::endl;
-    for (const auto& [title, block] : listing)
+    for (const auto& [title, data] : block)
     {
+        const std::vector<std::string>& times = data.first;
         std::cout << title << ": ";
-        for (std::size_t i = 0; i < block.times.size(); ++i)
+        for (std::size_t i = 0; i < times.size(); ++i)
         {
-            std::cout << block.times[i];
-            if (i + 1 < block.times.size()) std::cout << ", ";
+            std::cout << times[i];
+            if (i + 1 < times.size()) std::cout << ", ";
         }
         std::cout << std::endl
-                  << "Price: "
-                  << std::fixed << std::setprecision(2)
-                  << block.price << std::endl << std::endl;
+                  << "Price: " << std::fixed << std::setprecision(2)
+                  << data.second << std::endl << std::endl;
     }
 }
 
