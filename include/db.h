@@ -78,4 +78,14 @@ bool updateMovie(int id, const std::string& title, const std::string& language, 
 
 bool updateShowtime(int id, const std::string& startISO, double price);
 
+struct Seat     { int id, row, col; std::string type; bool taken; };
+struct SeatType { int id; std::string name; double price; };
+
+
+
+std::vector<Seat> fetchSeatsForShow(int showId);
+SeatType          getSeatTypeByName(const std::string&);
+bool reserveSeats(int userId, int showId, const std::vector<int>& seatIds, bool payNow);
+void sendMail(const std::string& to, const std::string& subject, const std::string& body);
+
 #endif

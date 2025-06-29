@@ -126,7 +126,7 @@ void Menu::displayMainMenu()
     }
 }
 
-void Menu::displayUserMenu(const User&)
+void Menu::displayUserMenu(const User& currentUser)
 {
     clearScreen();
     drawTeamName();
@@ -138,7 +138,7 @@ void Menu::displayUserMenu(const User&)
     {
         case 1:
         {
-            viewMoviesMenu();
+            browseAndReserve(currentUser);
             break;
         }
         case 2:
@@ -940,4 +940,153 @@ void Menu::deleteShowtimeMenu()
         std::cout << "Showtime deleted." << std::endl;
     else
         std::cout << "Delete failed." << std::endl;
+}
+
+void Menu::browseAndReserve(const User& user)
+{
+    std::vector<Cinema> cinemas = fetchAllCinemas();
+    if (cinemas.empty())
+    {
+        std::cout << "No cinemas." << std::endl;
+        return;
+    }
+    for (const Cinema& c : cinemas)
+        std::cout << c.id << " — " << c.name << std::endl;
+
+    int cinemaId {};
+    std::cout << "Cinema ID: ";
+    std::cin  >> cinemaId;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    auto   now = std::chrono::system_clock::now();
+    time_t tt  = std::chrono::system_clock::to_time_t(now);
+    std::tm tm = *std::localtime(&tt);
+    std::ostringstream buf;
+    buf << std::put_time(&tm, "%Y-%m-%d");
+    std::string today = buf.str();
+
+    std::string date;
+    std::cout << "Date (YYYY-MM-DD) [" << today << "]: ";
+    std::getline(std::cin, date);
+    if (date.empty()) date = today;
+
+    auto session = createSession();
+    std::string sql =
+        "SELECT st.id, m.title, DATE_FORMAT(st.start_time,'%H:%i'), st.price "
+        "FROM showtime st "
+        "JOIN movie m ON m.id = st.movie_id "
+        "JOIN hall  h ON h.id = st.hall_id "
+        "WHERE h.cinema_id = ? AND DATE(st.start_time) = ? ";
+    if (date == today) sql += "AND st.start_time > NOW() ";
+    sql += "ORDER BY m.title, st.start_time";
+
+    auto res = session->sql(sql).bind(cinemaId).bind(date).execute();
+    if (res.count() == 0)
+    {
+        std::cout << "No upcoming shows on that day." << std::endl;
+        return;
+    }
+
+    std::cout << "\nID  Title            Time  Price\n"
+              << "----------------------------------------\n";
+    for (const mysqlx::Row& r : res)
+    {
+        std::cout << std::left << std::setw(4)  << r[0].get<int>()
+                  << std::setw(16) << r[1].get<std::string>()
+                  << std::setw(6)  << r[2].get<std::string>()
+                  << std::fixed << std::setprecision(2)
+                  << r[3].get<double>() << std::endl;
+    }
+
+    int showId {};
+    std::cout << "\nShowtime ID: ";
+    std::cin  >> showId;
+
+    std::vector<Seat> seats = fetchSeatsForShow(showId);
+    if (seats.empty())
+    {
+        std::cout << "Seat map unavailable." << std::endl;
+        return;
+    }
+
+    int maxR = 0, maxC = 0;
+    for (const Seat& s : seats)
+    {
+        maxR = std::max(maxR, s.row);
+        maxC = std::max(maxC, s.col);
+    }
+
+    std::unordered_map<std::string, int> codeToId;
+    for (const Seat& s : seats)
+    {
+        char rowL = 'A' + static_cast<char>(s.row - 1);
+        std::ostringstream oss;
+        oss << rowL << s.col;
+        codeToId[oss.str()] = s.id;
+    }
+
+    int cellW = 3;
+    std::cout << "\nLegend: S silver  G gold  P platinum  X taken\n\n";
+
+    std::cout << std::setw(4) << ' ';
+    for (int c = 1; c <= maxC; ++c)
+        std::cout << std::setw(cellW) << c;
+    std::cout << '\n';
+
+    for (int r = 1; r <= maxR; ++r)
+    {
+        char rowL = 'A' + static_cast<char>(r - 1);
+        std::cout << rowL << " |  ";
+        for (int c = 1; c <= maxC; ++c)
+        {
+            auto it = std::find_if(
+                seats.begin(), seats.end(),
+                [r,c](const Seat& s){ return s.row == r && s.col == c; });
+
+            char ch = ' ';
+            if (it != seats.end())
+            {
+                ch = (it->type == "silver") ? 'S' :
+                     (it->type == "gold")   ? 'G' : 'P';
+                if (it->taken) ch = 'X';
+            }
+            std::cout << std::setw(cellW) << ch;
+        }
+        std::cout << '\n';
+    }
+
+    std::cout << "\nEnter seat codes (e.g. A5 B6 C7) or 0 to cancel: ";
+    std::vector<int> chosen;
+    std::string code;
+    while (std::cin >> code && code != "0")
+    {
+        auto it = codeToId.find(code);
+        if (it == codeToId.end())
+        {
+            std::cout << "Seat " << code << " does not exist. Try again: ";
+            continue;
+        }
+        chosen.push_back(it->second);
+    }
+    if (chosen.empty())
+    {
+        std::cout << "No seats selected." << std::endl;
+        return;
+    }
+
+    bool payNow {};
+    std::cout << "Pay now? (1=yes 0=reserve): ";
+    std::cin  >> payNow;
+
+    if (reserveSeats(user.id, showId, chosen, payNow))
+    {
+        sendMail(user.email,
+                 "Booking confirmation",
+                 "Your seats are booked.\nEnjoy the movie!");
+        std::cout << "Booking successful. Confirmation sent." << std::endl;
+    }
+    else
+    {
+        std::cout << "Booking failed (seats may already be taken)." << std::endl;
+    }
 }

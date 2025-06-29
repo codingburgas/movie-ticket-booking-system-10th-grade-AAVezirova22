@@ -1,6 +1,6 @@
 #include "../include/db.h"
 #include <iostream>
-
+#include <fstream>
 
 namespace
 {
@@ -358,4 +358,97 @@ bool updateShowtime(int id, const std::string& startISO, double price)
             .set("price", price)
             .where("id = :i").bind("i", id)
             .execute().getAffectedItemsCount() == 1;
+}
+
+std::vector<Seat> fetchSeatsForShow(int showId)
+{
+    std::vector<Seat> v;
+    auto s = createSession();
+    auto res = s->sql(
+        "SELECT s.id, s.row_no, s.col_no, st.name, "
+        "EXISTS(SELECT 1 FROM ticket t "
+        "       JOIN booking b ON b.id=t.booking_id "
+        "       WHERE t.seat_id=s.id AND b.showtime_id=? ) AS taken "
+        "FROM seat s "
+        "JOIN seat_type st ON st.id=s.seat_type_id "
+        "JOIN showtime stt ON stt.hall_id=s.hall_id "
+        "WHERE stt.id=? "
+        "ORDER BY s.row_no, s.col_no")
+        .bind(showId).bind(showId).execute();
+
+    for (mysqlx::Row r : res)
+        v.push_back({ r[0].get<int>(),
+                      r[1].get<int>(),
+                      r[2].get<int>(),
+                      r[3].get<std::string>(),
+                      r[4].get<bool>() });
+    return v;
+}
+
+SeatType getSeatTypeByName(const std::string& n)
+{
+    auto s=createSession();
+    auto row=s->getSchema("TicketBookingSystem")
+              .getTable("seat_type")
+              .select("id","price")
+              .where("name=:n").bind("n",n).execute().fetchOne();
+    return { row[0].get<int>(), n, row[1].get<double>() };
+}
+
+bool reserveSeats(int userId, int showId,
+                  const std::vector<int>& seatIds,
+                  bool payNow)
+{
+    if (seatIds.empty()) return false;
+
+    auto s = createSession();
+    s->startTransaction();
+
+    mysqlx::Table seatT = s->getSchema("TicketBookingSystem").getTable("seat");
+    mysqlx::SqlStatement check = s->sql(
+        "SELECT COUNT(*) FROM ticket t "
+        "JOIN booking b ON b.id = t.booking_id "
+        "WHERE b.showtime_id = ? AND t.seat_id = ?");
+    for (int sid : seatIds)
+    {
+        if (check.bind(showId).bind(sid).execute().fetchOne()[0].get<int>() > 0)
+        {
+            s->rollback();
+            return false;
+        }
+    }
+
+    double total = 0.0;
+    for (int sid : seatIds)
+    {
+        auto row = seatT.select("seat_type_id")
+                        .where("id=:i").bind("i",sid).execute().fetchOne();
+        int typeId = row[0].get<int>();
+        auto priceRow = s->getSchema("TicketBookingSystem").getTable("seat_type")
+                        .select("price").where("id=:i")
+                        .bind("i",typeId).execute().fetchOne();
+        total += priceRow[0].get<double>();
+    }
+
+    std::string status = payNow ? "paid" : "reserved";
+    auto bookingId = s->getSchema("TicketBookingSystem").getTable("booking")
+                     .insert("user_id","showtime_id","status","total_price")
+                     .values(userId, showId, status, total)
+                     .execute().getAutoIncrementValue();
+
+    auto ticketT = s->getSchema("TicketBookingSystem").getTable("ticket");
+    for (int sid : seatIds)
+        ticketT.insert("booking_id","seat_id").values(bookingId,sid).execute();
+
+    s->commit();
+    return true;
+}
+
+void sendMail(const std::string& to,
+              const std::string& subject,
+              const std::string& body)
+{
+
+    std::ofstream f("last_mail.txt");
+    f << "To: " << to << "\nSubject: " << subject << "\n\n" << body;
 }

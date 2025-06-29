@@ -46,6 +46,8 @@ private:
     void deleteMovieMenu();
     void deleteShowtimeMenu();
 
+    void browseAndReserve(const User& currentUser);
+
     int         choice      = 0;
     std::string username;
     std::string password;
