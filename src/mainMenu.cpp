@@ -385,79 +385,39 @@ void Menu::addMovieMenu()
 
 void Menu::addShowtimeMenu()
 {
-    int cinemaId{};
-    int hallId{};
-    int movieId{};
-    double price{};
-    std::string startISO;
+    int cinemaId{}, hallId{}, movieId{};
+    std::string date, time, startTime;
 
-    std::vector<Cinema> cinemas = fetchAllCinemas();
-    if (cinemas.empty())
-    {
-        std::cout << "No cinemas available." << std::endl;
-        return;
-    }
+    auto cinemas = fetchAllCinemas();
+    if (cinemas.empty()) { std::cout << "No cinemas.\n"; return; }
 
-    std::cout << std::endl << "Cinemas:" << std::endl;
+    std::cout << "\nCinemas:\n";
+    for (auto& c : cinemas) std::cout << c.id << " — " << c.name << '\n';
+    std::cout << "Cinema ID: "; std::cin >> cinemaId;
 
-    for (const Cinema& c : cinemas)
-    {
-        std::cout << c.id << " — " << c.name << std::endl;
-    }
+    auto halls = fetchHallsByCinema(cinemaId);
+    if (halls.empty()) { std::cout << "No halls.\n"; return; }
 
-    std::cout << "Cinema ID: ";
-    std::cin >> cinemaId;
+    std::cout << "\nHalls:\n";
+    for (auto& h : halls) std::cout << h.id << " — " << h.name << '\n';
+    std::cout << "Hall ID: "; std::cin >> hallId;
 
-    std::vector<Hall> halls = fetchHallsByCinema(cinemaId);
-    if (halls.empty())
-    {
-        std::cout << "No halls for that cinema." << std::endl;
-        return;
-    }
+    auto movies = fetchAllMovies();
+    if (movies.empty()) { std::cout << "No movies.\n"; return; }
 
-    std::cout << std::endl  << "Halls:" << std::endl;
-
-    for (const Hall& h : halls)
-    {
-        std::cout << h.id << " — " << h.name << std::endl;
-    }
-
-    std::cout << "Hall ID: ";
-    std::cin >> hallId;
-
-    std::vector<Movie> movies = fetchAllMovies();
-    if (movies.empty())
-    {
-        std::cout << "No movies available." << std::endl;
-        return;
-    }
-
-    std::cout << std::endl << "Movies:" << std::endl;
-
-    for (const Movie& m : movies)
-    {
-        std::cout << m.id << " — " << m.title << std::endl;
-    }
-
-    std::cout << "Movie ID: ";
-    std::cin >> movieId;
+    std::cout << "\nMovies:\n";
+    for (auto& m : movies) std::cout << m.id << " — " << m.title << '\n';
+    std::cout << "Movie ID: "; std::cin >> movieId;
 
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "Date (YYYY-MM-DD): "; std::getline(std::cin, date);
+    std::cout << "Start time (HH:MM): "; std::getline(std::cin, time);
+    startTime = date + " " + time;
 
-    std::cout << "Start time (YYYY-MM-DD HH:MM): ";
-    std::getline(std::cin, startISO);
-
-    std::cout << "Price: ";
-    std::cin >> price;
-
-    if (addShowtime(hallId, movieId, startISO, price))
-    {
-        std::cout << "Showtime added." << std::endl;
-    }
+    if (addShowtime(cinemaId, hallId, movieId, startTime))
+        std::cout << "Showtime added.\n";
     else
-    {
-        std::cout << "Failed to add showtime." << std::endl;
-    }
+        std::cout << "Failed to add.\n";
 }
 
 void Menu::listCinemasMenu()
@@ -522,7 +482,7 @@ void Menu::listShowtimesMenu()
     struct MovieBlock
     {
         std::vector<std::string> times;
-        double                   price {};
+        double price {};
     };
     std::map<std::string, MovieBlock> listing;
 
@@ -534,14 +494,13 @@ void Menu::listShowtimesMenu()
         std::string title = it->second;
 
         std::string time;
-        std::size_t pos = s.startISO.find(' ');
-        if (pos != std::string::npos && pos + 6 <= s.startISO.size())
-            time = s.startISO.substr(pos + 1, 5);
+        std::size_t pos = s.startTime.find(' ');
+        if (pos != std::string::npos && pos + 6 <= s.startTime.size())
+            time = s.startTime.substr(pos + 1, 5);
         else
-            time = s.startISO;
+            time = s.startTime;
 
         listing[title].times.push_back(time);
-        listing[title].price = s.price;
     }
 
     std::cout << std::endl;
@@ -554,10 +513,6 @@ void Menu::listShowtimesMenu()
             std::cout << block.times[i];
             if (i + 1 < block.times.size()) std::cout << ", ";
         }
-        std::cout << std::endl
-                  << "Price: "
-                  << std::fixed << std::setprecision(2)
-                  << block.price << std::endl << std::endl;
     }
 }
 
@@ -645,7 +600,7 @@ void Menu::viewMoviesMenu()
             if (i + 1 < times.size()) std::cout << ", ";
         }
         std::cout << std::endl
-                  << "Price: " << std::fixed << std::setprecision(2)
+                  << std::fixed << std::setprecision(2)
                   << data.second << std::endl << std::endl;
     }
 }
@@ -819,15 +774,13 @@ void Menu::editShowtimeMenu()
     std::unordered_map<int, std::string> idToTitle;
     for (const Movie& m : movies) idToTitle[m.id] = m.title;
 
-    std::cout << std::endl << "ID  Title            Time  Price" << std::endl;
-    std::cout << "----------------------------------------" << std::endl;
+    std::cout << std::endl << "ID  Title            Time  " << std::endl;
+    std::cout << "-----------------------------------" << std::endl;
     for (const Showtime& s : shows)
     {
-        std::cout << std::left << std::setw(4)  << s.id
-                  << std::setw(16)              << idToTitle[s.movieId]
-                  << std::setw(6)               << s.startISO
-                  << std::fixed << std::setprecision(2)
-                  << s.price << std::endl;
+        std::cout << std::left << std::setw(4) << s.id
+                  << std::setw(16) << idToTitle[s.movieId]
+                  << std::setw(6) << s.startTime << std::endl;
     }
 
     int id{};
@@ -837,7 +790,7 @@ void Menu::editShowtimeMenu()
 
     auto session = createSession();
     auto row = session->sql(
-                   "SELECT DATE_FORMAT(start_time,'%Y-%m-%d %H:%i'), price "
+                   "SELECT DATE_FORMAT(start_time,'%Y-%m-%d %H:%i'), "
                    "FROM showtime WHERE id = ?")
                    .bind(id).execute().fetchOne();
 
@@ -848,7 +801,7 @@ void Menu::editShowtimeMenu()
     }
 
     std::string start = row[0].get<std::string>();
-    double      price = row[1].get<double>();
+    double price = row[1].get<double>();
     std::string input;
 
     std::cout << "New start YYYY-MM-DD HH:MM [" << start << "]: ";
@@ -921,15 +874,14 @@ void Menu::deleteShowtimeMenu()
     std::unordered_map<int, std::string> idToTitle;
     for (const Movie& m : movies) idToTitle[m.id] = m.title;
 
-    std::cout << std::endl << "ID  Title            Time  Price" << std::endl;
-    std::cout << "----------------------------------------" << std::endl;
+    std::cout << std::endl << "ID  Title            Time" << std::endl;
+    std::cout << "------------------------------------" << std::endl;
     for (const Showtime& s : shows)
     {
-        std::cout << std::left << std::setw(4)  << s.id
-                  << std::setw(16)              << idToTitle[s.movieId]
-                  << std::setw(6)               << s.startISO
-                  << std::fixed << std::setprecision(2)
-                  << s.price << std::endl;
+        std::cout << std::left << std::setw(4) << s.id
+                  << std::setw(16) << idToTitle[s.movieId]
+                  << std::setw(6) << s.startTime
+                  << std::endl;
     }
 
     int id{};
@@ -987,15 +939,14 @@ void Menu::browseAndReserve(const User& user)
         return;
     }
 
-    std::cout << "\nID  Title            Time  Price\n"
-              << "----------------------------------------\n";
+    std::cout << "\nID  Title            Time \n"
+              << "-----------------------------------\n";
     for (const mysqlx::Row& r : res)
     {
         std::cout << std::left << std::setw(4)  << r[0].get<int>()
                   << std::setw(16) << r[1].get<std::string>()
                   << std::setw(6)  << r[2].get<std::string>()
-                  << std::fixed << std::setprecision(2)
-                  << r[3].get<double>() << std::endl;
+                  << std::endl;
     }
 
     int showId {};
@@ -1026,7 +977,7 @@ void Menu::browseAndReserve(const User& user)
     }
 
     int cellW = 3;
-    std::cout << "\nLegend: S silver  G gold  P platinum  X taken\n\n";
+    std::cout << "\nLegend: S silver - 9lv,  G gold - 11lv,  P platinum - 13lv, X taken\n\n";
 
     std::cout << std::setw(4) << ' ';
     for (int c = 1; c <= maxC; ++c)
@@ -1075,18 +1026,31 @@ void Menu::browseAndReserve(const User& user)
     }
 
     bool payNow {};
-    std::cout << "Pay now? (1=yes 0=reserve): ";
+    std::cout << "Pay now? (1 = yes 0 = reserve): ";
     std::cin  >> payNow;
 
-    if (reserveSeats(user.id, showId, chosen, payNow))
+    if (payNow)
     {
-        sendMail(user.email,
-                 "Booking confirmation",
-                 "Your seats are booked.\nEnjoy the movie!");
-        std::cout << "Booking successful. Confirmation sent." << std::endl;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        std::string holder, cardNo, exp, cvv;
+        std::cout << "\n--- Payment details ---\n";
+        std::cout << "Cardholder name: ";
+        std::getline(std::cin, holder);
+        std::cout << "Card number (16 digits): ";
+        std::getline(std::cin, cardNo);
+        std::cout << "Expiry date (MM/YY): ";
+        std::getline(std::cin, exp);
+        std::cout << "CVV: ";
+        std::getline(std::cin, cvv);
+
+        std::cout << "\nProcessing payment … Approved.\n";
     }
+
+    bool ok = reserveSeats(user.id, showId, chosen, payNow);
+
+    if (ok)
+        std::cout << "Booking successful.\n";
     else
-    {
-        std::cout << "Booking failed (seats may already be taken)." << std::endl;
-    }
+        std::cout << "Booking failed (seats may already be taken).\n";
 }

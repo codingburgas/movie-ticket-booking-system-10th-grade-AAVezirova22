@@ -254,15 +254,16 @@ std::vector<Movie> fetchAllMovies()
     return list;
 }
 
-bool addShowtime(int hallId, int movieId, const std::string& startISO, double price)
+bool addShowtime(int /*cinemaId*/, int hallId,
+                 int movieId,  const std::string& startTime)
 {
-    auto session = createSession();
-    auto table   = session->getSchema("TicketBookingSystem").getTable("showtime");
+    auto s = createSession();
+    auto t = s->getSchema("TicketBookingSystem").getTable("showtime");
 
-    auto res = table.insert("hall_id", "movie_id", "start_time", "price")
-                    .values(hallId, movieId, startISO, price)
-                    .execute();
 
+    auto res = t.insert("hall_id","movie_id","start_time")
+                 .values(hallId, movieId, startTime)
+                 .execute();
     return res.getAffectedItemsCount() == 1;
 }
 
@@ -282,29 +283,26 @@ bool deleteShowtime(int showId)
 std::vector<Showtime> fetchShowtimesByCinema(int cinemaId)
 {
     std::vector<Showtime> list;
+    auto s = createSession();
 
-    auto session = createSession();
-
-    auto res = session->sql(
-        "SELECT st.id, st.hall_id, st.movie_id, "
-        "       DATE_FORMAT(st.start_time, '%H:%i') AS hhmm, "
-        "       st.price "
+    auto res = s->sql(
+        "SELECT st.id, h.cinema_id, st.hall_id, st.movie_id, "
+        "       DATE_FORMAT(st.start_time,'%Y-%m-%d %H:%i') AS dt "
         "FROM   showtime st "
         "JOIN   hall h ON h.id = st.hall_id "
         "WHERE  h.cinema_id = ? "
         "ORDER  BY st.start_time")
-    .bind(cinemaId)
-    .execute();
+        .bind(cinemaId)
+        .execute();
 
-    for (const mysqlx::Row& r : res)
-    {
-        list.push_back(
-            { r[0].get<int>(),
-              r[1].get<int>(),
-              r[2].get<int>(),
-              r[3].get<std::string>(),
-              r[4].get<double>() });
-    }
+    for (mysqlx::Row r : res)
+        list.push_back({
+            r[0].get<int>(),
+            r[1].get<int>(),
+            r[2].get<int>(),
+            r[3].get<int>(),
+            r[4].get<std::string>()
+        });
     return list;
 }
 
@@ -348,13 +346,13 @@ bool updateMovie(int id, const std::string& title, const std::string& language, 
             .execute().getAffectedItemsCount() == 1;
 }
 
-bool updateShowtime(int id, const std::string& startISO, double price)
+bool updateShowtime(int id, const std::string& startTime, double price)
 {
     auto s = createSession();
     auto t = s->getSchema("TicketBookingSystem").getTable("showtime");
 
     return t.update()
-            .set("start_time", startISO)
+            .set("start_time", startTime)
             .set("price", price)
             .where("id = :i").bind("i", id)
             .execute().getAffectedItemsCount() == 1;

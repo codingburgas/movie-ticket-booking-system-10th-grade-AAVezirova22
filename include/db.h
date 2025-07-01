@@ -45,10 +45,10 @@ struct Movie
 struct Showtime
 {
     int id;
+    int cinemaId;
     int hallId;
     int movieId;
-    std::string startISO;
-    double price;
+    std::string startTime;
 };
 
 bool addCinema(const std::string& name, const std::string& city);
@@ -65,7 +65,7 @@ bool addMovie(const std::string& title, const std::string& language, const std::
 bool deleteMovie(int movieId);
 std::vector<Movie> fetchAllMovies();
 
-bool addShowtime(int hallId, int movieId, const std::string& startISO, double price);
+bool addShowtime(int cinemaId, int hallId, int movieId, const std::string& startTime);
 
 bool deleteShowtime(int showId);
 std::vector<Showtime> fetchShowtimesByCinema(int cinemaId);
@@ -76,7 +76,7 @@ bool updateHall(int id, const std::string& name, int seatsPerRow, int rowCount);
 
 bool updateMovie(int id, const std::string& title, const std::string& language, const std::string& genre, const std::string& releaseDate, int durationMin);
 
-bool updateShowtime(int id, const std::string& startISO, double price);
+bool updateShowtime(int id, const std::string& startTime, double price);
 
 struct Seat     { int id, row, col; std::string type; bool taken; };
 struct SeatType { int id; std::string name; double price; };
