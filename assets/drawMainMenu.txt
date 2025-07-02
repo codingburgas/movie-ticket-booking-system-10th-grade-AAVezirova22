@@ -4,8 +4,7 @@
                         |                                                                        |
                         |                                1. Login                                |
                         |                                2. Register                             |
-                        |                                3. View all movies TO DO                |
-                        |                                4. Exit                                 |
+                        |                                3. Exit                                 |
                         |                                                                        |
                         ==========================================================================
                         Enter your choice:

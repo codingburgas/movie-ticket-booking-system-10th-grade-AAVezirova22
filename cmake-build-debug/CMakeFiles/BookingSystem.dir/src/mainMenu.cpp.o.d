@@ -1,6 +1,6 @@
 CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o: \
-  /Users/ani/Documents/School/BookingSystem/src/mainMenu.cpp \
-  /Users/ani/Documents/School/BookingSystem/src/../include/mainMenu.h \
+  /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/mainMenu.cpp \
+  /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/../include/mainMenu.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/string \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__algorithm/max.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__algorithm/comp.h \
@@ -811,10 +811,10 @@ CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__bit/byteswap.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__bit/endian.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__bit/has_single_bit.h \
-  /Users/ani/Documents/School/BookingSystem/src/../include/user.h \
-  /Users/ani/Documents/School/BookingSystem/src/../include/login.h \
-  /Users/ani/Documents/School/BookingSystem/src/../include/register.h \
-  /Users/ani/Documents/School/BookingSystem/src/../include/db.h \
+  /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/../include/user.h \
+  /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/../include/login.h \
+  /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/../include/register.h \
+  /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/../include/db.h \
   /opt/homebrew/opt/mysql-connector-c++/include/mysqlx/xdevapi.h \
   /opt/homebrew/opt/mysql-connector-c++/include/mysqlx/devapi/common.h \
   /opt/homebrew/opt/mysql-connector-c++/include/mysqlx/devapi/../common.h \

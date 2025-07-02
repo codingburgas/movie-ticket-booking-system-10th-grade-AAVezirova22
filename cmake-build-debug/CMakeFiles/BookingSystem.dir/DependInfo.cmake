@@ -8,12 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/ani/Documents/School/BookingSystem/src/app.cpp" "CMakeFiles/BookingSystem.dir/src/app.cpp.o" "gcc" "CMakeFiles/BookingSystem.dir/src/app.cpp.o.d"
-  "/Users/ani/Documents/School/BookingSystem/src/db.cpp" "CMakeFiles/BookingSystem.dir/src/db.cpp.o" "gcc" "CMakeFiles/BookingSystem.dir/src/db.cpp.o.d"
-  "/Users/ani/Documents/School/BookingSystem/src/login.cpp" "CMakeFiles/BookingSystem.dir/src/login.cpp.o" "gcc" "CMakeFiles/BookingSystem.dir/src/login.cpp.o.d"
-  "/Users/ani/Documents/School/BookingSystem/src/main.cpp" "CMakeFiles/BookingSystem.dir/src/main.cpp.o" "gcc" "CMakeFiles/BookingSystem.dir/src/main.cpp.o.d"
-  "/Users/ani/Documents/School/BookingSystem/src/mainMenu.cpp" "CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o" "gcc" "CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o.d"
-  "/Users/ani/Documents/School/BookingSystem/src/register.cpp" "CMakeFiles/BookingSystem.dir/src/register.cpp.o" "gcc" "CMakeFiles/BookingSystem.dir/src/register.cpp.o.d"
+  "/Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/app.cpp" "CMakeFiles/BookingSystem.dir/src/app.cpp.o" "gcc" "CMakeFiles/BookingSystem.dir/src/app.cpp.o.d"
+  "/Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/db.cpp" "CMakeFiles/BookingSystem.dir/src/db.cpp.o" "gcc" "CMakeFiles/BookingSystem.dir/src/db.cpp.o.d"
+  "/Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/login.cpp" "CMakeFiles/BookingSystem.dir/src/login.cpp.o" "gcc" "CMakeFiles/BookingSystem.dir/src/login.cpp.o.d"
+  "/Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/main.cpp" "CMakeFiles/BookingSystem.dir/src/main.cpp.o" "gcc" "CMakeFiles/BookingSystem.dir/src/main.cpp.o.d"
+  "/Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/mainMenu.cpp" "CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o" "gcc" "CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o.d"
+  "/Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/register.cpp" "CMakeFiles/BookingSystem.dir/src/register.cpp.o" "gcc" "CMakeFiles/BookingSystem.dir/src/register.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

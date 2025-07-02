@@ -3,8 +3,7 @@
 #include "../include/db.h"
 #include "../include/register.h"
 
-bool registerUser()
-{
+bool registerUser() {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     std::string username, email, password;
@@ -24,8 +23,7 @@ bool registerUser()
             std::cout << "Nothing inserted – check your data.\n";
             return false;
         }
-    }
-    catch (const mysqlx::Error& e) {
+    } catch (const mysqlx::Error &e) {
         std::cerr << "Registration failed: " << e.what() << '\n';
         return false;
     }

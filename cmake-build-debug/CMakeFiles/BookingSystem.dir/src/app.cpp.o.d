@@ -1,7 +1,7 @@
 CMakeFiles/BookingSystem.dir/src/app.cpp.o: \
-  /Users/ani/Documents/School/BookingSystem/src/app.cpp \
-  /Users/ani/Documents/School/BookingSystem/src/../include/app.h \
-  /Users/ani/Documents/School/BookingSystem/src/../include/mainMenu.h \
+  /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/app.cpp \
+  /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/../include/app.h \
+  /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/../include/mainMenu.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/string \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__algorithm/max.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__algorithm/comp.h \
@@ -812,4 +812,4 @@ CMakeFiles/BookingSystem.dir/src/app.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__bit/byteswap.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__bit/endian.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__bit/has_single_bit.h \
-  /Users/ani/Documents/School/BookingSystem/src/../include/user.h
+  /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/../include/user.h

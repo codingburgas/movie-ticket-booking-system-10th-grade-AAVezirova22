@@ -1,4 +1,12 @@
-/opt/homebrew/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S /Users/ani/Documents/School/BookingSystem -B /Users/ani/Documents/School/BookingSystem/cmake-build-debug
--- Configuring done (0.0s)
+/opt/homebrew/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22 -B /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug
+-- The CXX compiler identification is AppleClang 16.0.0.16000026
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found mysql-concpp: /opt/homebrew/opt/mysql-connector-c++/include (found version "9.3.0")
+-- Found OpenSSL: /opt/homebrew/opt/openssl@3/lib/libcrypto.dylib (found version "3.5.0")
+-- Configuring done (0.8s)
 -- Generating done (0.0s)
--- Build files have been written to: /Users/ani/Documents/School/BookingSystem/cmake-build-debug
+-- Build files have been written to: /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug

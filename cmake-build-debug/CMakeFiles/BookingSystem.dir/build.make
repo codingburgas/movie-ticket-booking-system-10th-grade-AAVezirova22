@@ -53,10 +53,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ani/Documents/School/BookingSystem
+CMAKE_SOURCE_DIR = /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ani/Documents/School/BookingSystem/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/BookingSystem.dir/depend.make
@@ -73,88 +73,88 @@ CMakeFiles/BookingSystem.dir/codegen:
 .PHONY : CMakeFiles/BookingSystem.dir/codegen
 
 CMakeFiles/BookingSystem.dir/src/app.cpp.o: CMakeFiles/BookingSystem.dir/flags.make
-CMakeFiles/BookingSystem.dir/src/app.cpp.o: /Users/ani/Documents/School/BookingSystem/src/app.cpp
+CMakeFiles/BookingSystem.dir/src/app.cpp.o: /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/app.cpp
 CMakeFiles/BookingSystem.dir/src/app.cpp.o: CMakeFiles/BookingSystem.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ani/Documents/School/BookingSystem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/BookingSystem.dir/src/app.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BookingSystem.dir/src/app.cpp.o -MF CMakeFiles/BookingSystem.dir/src/app.cpp.o.d -o CMakeFiles/BookingSystem.dir/src/app.cpp.o -c /Users/ani/Documents/School/BookingSystem/src/app.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/BookingSystem.dir/src/app.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BookingSystem.dir/src/app.cpp.o -MF CMakeFiles/BookingSystem.dir/src/app.cpp.o.d -o CMakeFiles/BookingSystem.dir/src/app.cpp.o -c /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/app.cpp
 
 CMakeFiles/BookingSystem.dir/src/app.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BookingSystem.dir/src/app.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ani/Documents/School/BookingSystem/src/app.cpp > CMakeFiles/BookingSystem.dir/src/app.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/app.cpp > CMakeFiles/BookingSystem.dir/src/app.cpp.i
 
 CMakeFiles/BookingSystem.dir/src/app.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BookingSystem.dir/src/app.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ani/Documents/School/BookingSystem/src/app.cpp -o CMakeFiles/BookingSystem.dir/src/app.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/app.cpp -o CMakeFiles/BookingSystem.dir/src/app.cpp.s
 
 CMakeFiles/BookingSystem.dir/src/login.cpp.o: CMakeFiles/BookingSystem.dir/flags.make
-CMakeFiles/BookingSystem.dir/src/login.cpp.o: /Users/ani/Documents/School/BookingSystem/src/login.cpp
+CMakeFiles/BookingSystem.dir/src/login.cpp.o: /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/login.cpp
 CMakeFiles/BookingSystem.dir/src/login.cpp.o: CMakeFiles/BookingSystem.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ani/Documents/School/BookingSystem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/BookingSystem.dir/src/login.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BookingSystem.dir/src/login.cpp.o -MF CMakeFiles/BookingSystem.dir/src/login.cpp.o.d -o CMakeFiles/BookingSystem.dir/src/login.cpp.o -c /Users/ani/Documents/School/BookingSystem/src/login.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/BookingSystem.dir/src/login.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BookingSystem.dir/src/login.cpp.o -MF CMakeFiles/BookingSystem.dir/src/login.cpp.o.d -o CMakeFiles/BookingSystem.dir/src/login.cpp.o -c /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/login.cpp
 
 CMakeFiles/BookingSystem.dir/src/login.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BookingSystem.dir/src/login.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ani/Documents/School/BookingSystem/src/login.cpp > CMakeFiles/BookingSystem.dir/src/login.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/login.cpp > CMakeFiles/BookingSystem.dir/src/login.cpp.i
 
 CMakeFiles/BookingSystem.dir/src/login.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BookingSystem.dir/src/login.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ani/Documents/School/BookingSystem/src/login.cpp -o CMakeFiles/BookingSystem.dir/src/login.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/login.cpp -o CMakeFiles/BookingSystem.dir/src/login.cpp.s
 
 CMakeFiles/BookingSystem.dir/src/main.cpp.o: CMakeFiles/BookingSystem.dir/flags.make
-CMakeFiles/BookingSystem.dir/src/main.cpp.o: /Users/ani/Documents/School/BookingSystem/src/main.cpp
+CMakeFiles/BookingSystem.dir/src/main.cpp.o: /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/main.cpp
 CMakeFiles/BookingSystem.dir/src/main.cpp.o: CMakeFiles/BookingSystem.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ani/Documents/School/BookingSystem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/BookingSystem.dir/src/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BookingSystem.dir/src/main.cpp.o -MF CMakeFiles/BookingSystem.dir/src/main.cpp.o.d -o CMakeFiles/BookingSystem.dir/src/main.cpp.o -c /Users/ani/Documents/School/BookingSystem/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/BookingSystem.dir/src/main.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BookingSystem.dir/src/main.cpp.o -MF CMakeFiles/BookingSystem.dir/src/main.cpp.o.d -o CMakeFiles/BookingSystem.dir/src/main.cpp.o -c /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/main.cpp
 
 CMakeFiles/BookingSystem.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BookingSystem.dir/src/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ani/Documents/School/BookingSystem/src/main.cpp > CMakeFiles/BookingSystem.dir/src/main.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/main.cpp > CMakeFiles/BookingSystem.dir/src/main.cpp.i
 
 CMakeFiles/BookingSystem.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BookingSystem.dir/src/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ani/Documents/School/BookingSystem/src/main.cpp -o CMakeFiles/BookingSystem.dir/src/main.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/main.cpp -o CMakeFiles/BookingSystem.dir/src/main.cpp.s
 
 CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o: CMakeFiles/BookingSystem.dir/flags.make
-CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o: /Users/ani/Documents/School/BookingSystem/src/mainMenu.cpp
+CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o: /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/mainMenu.cpp
 CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o: CMakeFiles/BookingSystem.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ani/Documents/School/BookingSystem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o -MF CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o.d -o CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o -c /Users/ani/Documents/School/BookingSystem/src/mainMenu.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o -MF CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o.d -o CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.o -c /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/mainMenu.cpp
 
 CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ani/Documents/School/BookingSystem/src/mainMenu.cpp > CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/mainMenu.cpp > CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.i
 
 CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ani/Documents/School/BookingSystem/src/mainMenu.cpp -o CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/mainMenu.cpp -o CMakeFiles/BookingSystem.dir/src/mainMenu.cpp.s
 
 CMakeFiles/BookingSystem.dir/src/register.cpp.o: CMakeFiles/BookingSystem.dir/flags.make
-CMakeFiles/BookingSystem.dir/src/register.cpp.o: /Users/ani/Documents/School/BookingSystem/src/register.cpp
+CMakeFiles/BookingSystem.dir/src/register.cpp.o: /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/register.cpp
 CMakeFiles/BookingSystem.dir/src/register.cpp.o: CMakeFiles/BookingSystem.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ani/Documents/School/BookingSystem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/BookingSystem.dir/src/register.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BookingSystem.dir/src/register.cpp.o -MF CMakeFiles/BookingSystem.dir/src/register.cpp.o.d -o CMakeFiles/BookingSystem.dir/src/register.cpp.o -c /Users/ani/Documents/School/BookingSystem/src/register.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/BookingSystem.dir/src/register.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BookingSystem.dir/src/register.cpp.o -MF CMakeFiles/BookingSystem.dir/src/register.cpp.o.d -o CMakeFiles/BookingSystem.dir/src/register.cpp.o -c /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/register.cpp
 
 CMakeFiles/BookingSystem.dir/src/register.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BookingSystem.dir/src/register.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ani/Documents/School/BookingSystem/src/register.cpp > CMakeFiles/BookingSystem.dir/src/register.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/register.cpp > CMakeFiles/BookingSystem.dir/src/register.cpp.i
 
 CMakeFiles/BookingSystem.dir/src/register.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BookingSystem.dir/src/register.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ani/Documents/School/BookingSystem/src/register.cpp -o CMakeFiles/BookingSystem.dir/src/register.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/register.cpp -o CMakeFiles/BookingSystem.dir/src/register.cpp.s
 
 CMakeFiles/BookingSystem.dir/src/db.cpp.o: CMakeFiles/BookingSystem.dir/flags.make
-CMakeFiles/BookingSystem.dir/src/db.cpp.o: /Users/ani/Documents/School/BookingSystem/src/db.cpp
+CMakeFiles/BookingSystem.dir/src/db.cpp.o: /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/db.cpp
 CMakeFiles/BookingSystem.dir/src/db.cpp.o: CMakeFiles/BookingSystem.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ani/Documents/School/BookingSystem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/BookingSystem.dir/src/db.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BookingSystem.dir/src/db.cpp.o -MF CMakeFiles/BookingSystem.dir/src/db.cpp.o.d -o CMakeFiles/BookingSystem.dir/src/db.cpp.o -c /Users/ani/Documents/School/BookingSystem/src/db.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/BookingSystem.dir/src/db.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BookingSystem.dir/src/db.cpp.o -MF CMakeFiles/BookingSystem.dir/src/db.cpp.o.d -o CMakeFiles/BookingSystem.dir/src/db.cpp.o -c /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/db.cpp
 
 CMakeFiles/BookingSystem.dir/src/db.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BookingSystem.dir/src/db.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ani/Documents/School/BookingSystem/src/db.cpp > CMakeFiles/BookingSystem.dir/src/db.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/db.cpp > CMakeFiles/BookingSystem.dir/src/db.cpp.i
 
 CMakeFiles/BookingSystem.dir/src/db.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BookingSystem.dir/src/db.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ani/Documents/School/BookingSystem/src/db.cpp -o CMakeFiles/BookingSystem.dir/src/db.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/db.cpp -o CMakeFiles/BookingSystem.dir/src/db.cpp.s
 
 # Object files for target BookingSystem
 BookingSystem_OBJECTS = \
@@ -179,7 +179,7 @@ BookingSystem: /opt/homebrew/opt/mysql-connector-c++/lib/libmysqlcppconnx.dylib
 BookingSystem: /opt/homebrew/opt/openssl@3/lib/libssl.dylib
 BookingSystem: /opt/homebrew/opt/openssl@3/lib/libcrypto.dylib
 BookingSystem: CMakeFiles/BookingSystem.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/ani/Documents/School/BookingSystem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable BookingSystem"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable BookingSystem"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/BookingSystem.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -191,6 +191,6 @@ CMakeFiles/BookingSystem.dir/clean:
 .PHONY : CMakeFiles/BookingSystem.dir/clean
 
 CMakeFiles/BookingSystem.dir/depend:
-	cd /Users/ani/Documents/School/BookingSystem/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/ani/Documents/School/BookingSystem /Users/ani/Documents/School/BookingSystem /Users/ani/Documents/School/BookingSystem/cmake-build-debug /Users/ani/Documents/School/BookingSystem/cmake-build-debug /Users/ani/Documents/School/BookingSystem/cmake-build-debug/CMakeFiles/BookingSystem.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22 /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22 /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug/CMakeFiles/BookingSystem.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/BookingSystem.dir/depend
 

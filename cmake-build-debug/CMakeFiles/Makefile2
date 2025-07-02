@@ -54,10 +54,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ani/Documents/School/BookingSystem
+CMAKE_SOURCE_DIR = /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ani/Documents/School/BookingSystem/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -85,14 +85,14 @@ clean: CMakeFiles/BookingSystem.dir/clean
 CMakeFiles/BookingSystem.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BookingSystem.dir/build.make CMakeFiles/BookingSystem.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BookingSystem.dir/build.make CMakeFiles/BookingSystem.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/ani/Documents/School/BookingSystem/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target BookingSystem"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target BookingSystem"
 .PHONY : CMakeFiles/BookingSystem.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/BookingSystem.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ani/Documents/School/BookingSystem/cmake-build-debug/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/BookingSystem.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ani/Documents/School/BookingSystem/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/BookingSystem.dir/rule
 
 # Convenience name for target.
@@ -102,7 +102,7 @@ BookingSystem: CMakeFiles/BookingSystem.dir/rule
 # codegen rule for target.
 CMakeFiles/BookingSystem.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BookingSystem.dir/build.make CMakeFiles/BookingSystem.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/ani/Documents/School/BookingSystem/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Finished codegen for target BookingSystem"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Finished codegen for target BookingSystem"
 .PHONY : CMakeFiles/BookingSystem.dir/codegen
 
 # clean rule for target.

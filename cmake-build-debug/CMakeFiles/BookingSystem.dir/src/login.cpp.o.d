@@ -1,5 +1,5 @@
 CMakeFiles/BookingSystem.dir/src/login.cpp.o: \
-  /Users/ani/Documents/School/BookingSystem/src/login.cpp \
+  /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/login.cpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/iostream \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__assert \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__assertion_handler \
@@ -956,7 +956,7 @@ CMakeFiles/BookingSystem.dir/src/login.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/formatter_tuple.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/print \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/unistd.h \
-  /Users/ani/Documents/School/BookingSystem/src/../include/db.h \
+  /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/../include/db.h \
   /opt/homebrew/opt/mysql-connector-c++/include/mysqlx/xdevapi.h \
   /opt/homebrew/opt/mysql-connector-c++/include/mysqlx/devapi/common.h \
   /opt/homebrew/opt/mysql-connector-c++/include/mysqlx/devapi/../common.h \
@@ -1020,5 +1020,5 @@ CMakeFiles/BookingSystem.dir/src/login.cpp.o: \
   /opt/homebrew/opt/mysql-connector-c++/include/mysqlx/devapi/detail/session.h \
   /opt/homebrew/opt/mysql-connector-c++/include/mysqlx/devapi/detail/../crud.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/set \
-  /Users/ani/Documents/School/BookingSystem/src/../include/user.h \
-  /Users/ani/Documents/School/BookingSystem/src/../include/login.h
+  /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/../include/user.h \
+  /Users/ani/Documents/movie-ticket-booking-system-10th-grade-AAVezirova22/src/../include/login.h

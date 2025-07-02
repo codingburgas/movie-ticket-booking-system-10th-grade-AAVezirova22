@@ -3,8 +3,7 @@
 #include "../include/db.h"
 #include "../include/login.h"
 
-std::optional<User> loginUser()
-{
+std::optional<User> loginUser() {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     std::string username, password;
@@ -24,8 +23,7 @@ std::optional<User> loginUser()
         }
 
         return user;
-    }
-    catch (const mysqlx::Error& e) {
+    } catch (const mysqlx::Error &e) {
         std::cerr << "Login failed: " << e.what() << '\n';
         return std::nullopt;
     }

@@ -9,8 +9,7 @@
 #include <limits>
 #include <vector>
 
-void Menu::clearScreen()
-{
+void Menu::clearScreen() {
 #if defined(_WIN32) || defined(_WIN64)
     system("cls");
 #else
@@ -18,104 +17,83 @@ void Menu::clearScreen()
 #endif
 }
 
-void Menu::drawTeamName()
-{
+void pause() {
+    std::cout << "\nPress <Enter>...";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
+}
+
+void Menu::drawTeamName() {
     std::ifstream file("../assets/drawTeamName.txt");
-    std::string   line;
+    std::string line;
 
-    while (std::getline(file, line))
-    {
+    while (std::getline(file, line)) {
         std::cout << line << std::endl;
     }
 }
 
-void Menu::drawMainMenu()
-{
+void Menu::drawMainMenu() {
     std::ifstream file("../assets/drawMainMenu.txt");
-    std::string   line;
+    std::string line;
 
-    while (std::getline(file, line))
-    {
+    while (std::getline(file, line)) {
         std::cout << line << std::endl;
     }
 }
 
-void Menu::drawUserMenu()
-{
+void Menu::drawUserMenu() {
     std::ifstream file("../assets/drawUserMenu.txt");
     std::string line;
 
-    while (std::getline(file, line))
-    {
+    while (std::getline(file, line)) {
         std::cout << line << std::endl;
     }
 }
 
-void Menu::drawAdminMenu()
-{
+void Menu::drawAdminMenu() {
     std::ifstream file("../assets/drawAdminMenu.txt");
-    std::string   line;
+    std::string line;
 
-    while (std::getline(file, line))
-    {
+    while (std::getline(file, line)) {
         std::cout << line << std::endl;
     }
 }
 
-void Menu::displayMainMenu()
-{
-    while (true)
-    {
+void Menu::displayMainMenu() {
+    while (true) {
         clearScreen();
         drawTeamName();
         drawMainMenu();
 
         std::cin >> choice;
-        if (std::cin.fail())
-        {
+        if (std::cin.fail()) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             continue;
         }
 
-        switch (choice)
-        {
-            case 1:
-            {
+        switch (choice) {
+            case 1: {
                 auto user = loginUser();
-                if (user)
-                {
-                    if (user->isAdmin())
-                    {
+                if (user) {
+                    if (user->isAdmin()) {
                         displayAdminMenu(*user);
-                    }
-                    else
-                    {
+                    } else {
                         displayUserMenu(*user);
                     }
                 }
                 break;
             }
-            case 2:
-            {
+            case 2: {
                 registerUser();
                 break;
             }
-            case 3:
-            {
-                viewMoviesMenu();
-                break;
-            }
-            case 4:
-            {
-                std::cout << std::endl
-                          << "Exiting..." << std::endl;
+            case 3: {
+                std::cout << std::endl << "Exiting..." << std::endl;
                 return;
             }
-            default:
-            {
-                std::cout << std::endl
-                          << "Invalid input." << std::endl;
+            default: {
+                std::cout << std::endl << "Invalid input." << std::endl;
                 break;
             }
         }
@@ -126,80 +104,89 @@ void Menu::displayMainMenu()
     }
 }
 
-void Menu::displayUserMenu(const User& currentUser)
-{
+void Menu::displayUserMenu(const User &currentUser) {
     clearScreen();
     drawTeamName();
     drawUserMenu();
 
     std::cin >> choice;
 
-    switch (choice)
-    {
-        case 1:
-        {
+    switch (choice) {
+        case 1: {
             browseAndReserve(currentUser);
             break;
         }
-        case 2:
-        {
-            std::cout << std::endl
-                      << "Logging out..." << std::endl;
+        case 2: {
+            searchMoviesMenu();
+            break;
+        }
+        case 3: {
+            std::cout << std::endl << "Logging out..." << std::endl;
             return;
         }
-        default:
-        {
+        default: {
             std::cout << "Invalid input." << std::endl;
             break;
         }
     }
 }
 
-void Menu::displayAdminMenu(const User& currentUser)
-{
+void Menu::displayAdminMenu(const User &currentUser) {
     loggedUser = currentUser;
 
-    while (true)
-    {
+    while (true) {
         clearScreen();
         drawTeamName();
         drawAdminMenu();
 
 
         std::cin >> choice;
-        if (std::cin.fail())
-        {
+        if (std::cin.fail()) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             continue;
         }
 
-        switch (choice)
-        {
-            case 1:  promoteUser();        break;
-            case 2:  demoteUser();         break;
-            case 3:  addCinemaMenu();      break;
-            case 4:  addHallMenu();        break;
-            case 5:  addMovieMenu();       break;
-            case 6:  addShowtimeMenu();    break;
-            case 7:  listCinemasMenu();    break;
-            case 8:  listMoviesMenu();     break;
-            case 9:  listShowtimesMenu();  break;
-            case 10: editCinemaMenu();       break;
-            case 11: editHallMenu();         break;
-            case 12: editMovieMenu();        break;
-            case 13: editShowtimeMenu();     break;
-            case 14: deleteCinemaMenu();     break;
-            case 15: deleteHallMenu();       break;
-            case 16: deleteMovieMenu();      break;
-            case 17: deleteShowtimeMenu();   break;
-            case 18:
-            {
+        switch (choice) {
+            case 1: promoteUser();
+                break;
+            case 2: demoteUser();
+                break;
+            case 3: addCinemaMenu();
+                break;
+            case 4: addHallMenu();
+                break;
+            case 5: addMovieMenu();
+                break;
+            case 6: addShowtimeMenu();
+                break;
+            case 7: listCinemasMenu();
+                break;
+            case 8: listMoviesMenu();
+                break;
+            case 9: listShowtimesMenu();
+                break;
+            case 10: editCinemaMenu();
+                break;
+            case 11: editHallMenu();
+                break;
+            case 12: editMovieMenu();
+                break;
+            case 13: editShowtimeMenu();
+                break;
+            case 14: deleteCinemaMenu();
+                break;
+            case 15: deleteHallMenu();
+                break;
+            case 16: deleteMovieMenu();
+                break;
+            case 17: deleteShowtimeMenu();
+                break;
+            case 18: {
                 std::cout << "Logging out..." << std::endl;
                 return;
             }
-            default:
-            {
+            default: {
                 std::cout << "Invalid input." << std::endl;
                 break;
             }
@@ -211,116 +198,90 @@ void Menu::displayAdminMenu(const User& currentUser)
     }
 }
 
-void Menu::promoteUser()
-{
+void Menu::promoteUser() {
     std::vector<User> users = fetchAllUsers();
 
-    std::cout << std::endl
-              << "ID  Username        Role" << std::endl
-              << "---------------------------------" << std::endl;
+    std::cout << std::endl << "ID  Username        Role" << std::endl << "---------------------------------" << std::endl;
 
-    for (const User& u : users)
-    {
-        std::cout << std::left << std::setw(4) << u.id
-                  << std::setw(16) << u.username
-                  << u.role << std::endl;
+    for (const User &u: users) {
+        std::cout << std::left << std::setw(4) << u.id << std::setw(16) << u.username << u.role << std::endl;
     }
 
     int id{};
-    std::cout << std::endl
-              << "Enter user ID to promote: ";
+    std::cout << std::endl << "Enter user ID to promote: ";
     std::cin >> id;
 
-    if (changeUserRole(id, "admin"))
-    {
+    if (changeUserRole(id, "admin")) {
         std::cout << "Promotion successful." << std::endl;
-    }
-    else
-    {
+    } else {
         std::cout << "Promotion failed." << std::endl;
     }
 }
 
-void Menu::demoteUser()
-{
+void Menu::demoteUser() {
     std::vector<User> users = fetchAllUsers();
 
     std::cout << std::endl
-              << "ID  Username" << std::endl
-              << "----------------------" << std::endl;
+            << "ID  Username" << std::endl
+            << "----------------------" << std::endl;
 
-    for (const User& u : users)
-    {
-        if (u.isAdmin())
-        {
-            std::cout << std::left << std::setw(4) << u.id
-                      << u.username << std::endl;
+    for (const User &u: users) {
+        if (u.isAdmin()) {
+            std::cout << std::left << std::setw(4) << u.id << u.username << std::endl;
         }
     }
 
     int id{};
-    std::cout << std::endl
-              << "Enter admin ID to demote: ";
+    std::cout << std::endl << "Enter admin ID to demote: ";
     std::cin >> id;
 
-    if (id == loggedUser.id)
-    {
+    if (id == loggedUser.id) {
         std::cout << "You cannot demote yourself." << std::endl;
         return;
     }
 
-    if (changeUserRole(id, "user"))
-    {
+    if (changeUserRole(id, "user")) {
         std::cout << "Demotion successful." << std::endl;
-    }
-    else
-    {
+    } else {
         std::cout << "Demotion failed." << std::endl;
     }
 }
 
-void Menu::addCinemaMenu()
-{
+void Menu::addCinemaMenu() {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     std::string name;
     std::string city;
 
     std::cout << std::endl
-              << "Cinema name: ";
+            << "Cinema name: ";
     std::getline(std::cin, name);
 
     std::cout << "City: ";
     std::getline(std::cin, city);
 
-    if (addCinema(name, city))
-    {
+    if (addCinema(name, city)) {
         std::cout << "Cinema added." << std::endl;
-    }
-    else
-    {
+    } else {
         std::cout << "Failed to add cinema." << std::endl;
     }
 }
 
-void Menu::addHallMenu()
-{
+void Menu::addHallMenu() {
     int cinemaId{};
     int seats{};
     int rows{};
     std::string hallName;
 
     std::vector<Cinema> cinemas = fetchAllCinemas();
-    if (cinemas.empty())
-    {
+    if (cinemas.empty()) {
         std::cout << "No cinemas available." << std::endl;
         return;
     }
 
     std::cout << std::endl << "Cinemas:" << std::endl;
 
-    for (const Cinema& c : cinemas)
-    {
+    for (const Cinema &c: cinemas) {
         std::cout << c.id << " — " << c.name << " (" << c.city << ")" << std::endl;
     }
 
@@ -338,18 +299,14 @@ void Menu::addHallMenu()
     std::cout << "Row count: ";
     std::cin >> rows;
 
-    if (addHall(cinemaId, hallName, seats, rows))
-    {
+    if (addHall(cinemaId, hallName, seats, rows)) {
         std::cout << "Hall added." << std::endl;
-    }
-    else
-    {
+    } else {
         std::cout << "Failed to add hall." << std::endl;
     }
 }
 
-void Menu::addMovieMenu()
-{
+void Menu::addMovieMenu() {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     std::string title;
@@ -373,45 +330,55 @@ void Menu::addMovieMenu()
     std::cout << "Duration (minutes): ";
     std::cin >> duration;
 
-    if (addMovie(title, language, genre, date, duration))
-    {
+    if (addMovie(title, language, genre, date, duration)) {
         std::cout << "Movie added." << std::endl;
-    }
-    else
-    {
+    } else {
         std::cout << "Failed to add movie." << std::endl;
     }
 }
 
-void Menu::addShowtimeMenu()
-{
+void Menu::addShowtimeMenu() {
     int cinemaId{}, hallId{}, movieId{};
     std::string date, time, startTime;
 
     auto cinemas = fetchAllCinemas();
-    if (cinemas.empty()) { std::cout << "No cinemas.\n"; return; }
+    if (cinemas.empty()) {
+        std::cout << "No cinemas.\n";
+        return;
+    }
 
     std::cout << "\nCinemas:\n";
-    for (auto& c : cinemas) std::cout << c.id << " — " << c.name << '\n';
-    std::cout << "Cinema ID: "; std::cin >> cinemaId;
+    for (auto &c: cinemas) std::cout << c.id << " — " << c.name << '\n';
+    std::cout << "Cinema ID: ";
+    std::cin >> cinemaId;
 
     auto halls = fetchHallsByCinema(cinemaId);
-    if (halls.empty()) { std::cout << "No halls.\n"; return; }
+    if (halls.empty()) {
+        std::cout << "No halls.\n";
+        return;
+    }
 
     std::cout << "\nHalls:\n";
-    for (auto& h : halls) std::cout << h.id << " — " << h.name << '\n';
-    std::cout << "Hall ID: "; std::cin >> hallId;
+    for (auto &h: halls) std::cout << h.id << " — " << h.name << '\n';
+    std::cout << "Hall ID: ";
+    std::cin >> hallId;
 
     auto movies = fetchAllMovies();
-    if (movies.empty()) { std::cout << "No movies.\n"; return; }
+    if (movies.empty()) {
+        std::cout << "No movies.\n";
+        return;
+    }
 
     std::cout << "\nMovies:\n";
-    for (auto& m : movies) std::cout << m.id << " — " << m.title << '\n';
-    std::cout << "Movie ID: "; std::cin >> movieId;
+    for (auto &m: movies) std::cout << m.id << " — " << m.title << '\n';
+    std::cout << "Movie ID: ";
+    std::cin >> movieId;
 
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    std::cout << "Date (YYYY-MM-DD): "; std::getline(std::cin, date);
-    std::cout << "Start time (HH:MM): "; std::getline(std::cin, time);
+    std::cout << "Date (YYYY-MM-DD): ";
+    std::getline(std::cin, date);
+    std::cout << "Start time (HH:MM): ";
+    std::getline(std::cin, time);
     startTime = date + " " + time;
 
     if (addShowtime(cinemaId, hallId, movieId, startTime))
@@ -420,74 +387,63 @@ void Menu::addShowtimeMenu()
         std::cout << "Failed to add.\n";
 }
 
-void Menu::listCinemasMenu()
-{
+void Menu::listCinemasMenu() {
     std::vector<Cinema> cinemas = fetchAllCinemas();
 
-    if (cinemas.empty())
-    {
+    if (cinemas.empty()) {
         std::cout << "No cinemas." << std::endl;
         return;
     }
 
-    for (const Cinema& c : cinemas)
-    {
+    for (const Cinema &c: cinemas) {
         std::cout << c.id << "  " << c.name << " (" << c.city << ")" << std::endl;
     }
 }
 
-void Menu::listMoviesMenu()
-{
+void Menu::listMoviesMenu() {
     std::vector<Movie> movies = fetchAllMovies();
 
-    if (movies.empty())
-    {
+    if (movies.empty()) {
         std::cout << "No movies." << std::endl;
         return;
     }
 
-    for (const Movie& m : movies)
-    {
+    for (const Movie &m: movies) {
         std::cout << m.id << "  " << m.title << " — " << m.genre << " — " << m.language << " — " << m.releaseDate << std::endl;
     }
 }
 
-void Menu::listShowtimesMenu()
-{
+void Menu::listShowtimesMenu() {
     std::vector<Cinema> cinemas = fetchAllCinemas();
-    if (cinemas.empty())
-    {
+    if (cinemas.empty()) {
         std::cout << "No cinemas." << std::endl;
         return;
     }
 
-    for (const Cinema& c : cinemas)
+    for (const Cinema &c: cinemas)
         std::cout << c.id << " — " << c.name << std::endl;
 
-    int cinemaId {};
+    int cinemaId{};
     std::cout << "Cinema ID: ";
-    std::cin  >> cinemaId;
+    std::cin >> cinemaId;
 
     std::vector<Showtime> shows = fetchShowtimesByCinema(cinemaId);
-    if (shows.empty())
-    {
+    if (shows.empty()) {
         std::cout << "No showtimes for this cinema." << std::endl;
         return;
     }
 
     std::vector<Movie> movies = fetchAllMovies();
     std::unordered_map<int, std::string> idToTitle;
-    for (const Movie& m : movies) idToTitle[m.id] = m.title;
+    for (const Movie &m: movies) idToTitle[m.id] = m.title;
 
-    struct MovieBlock
-    {
+    struct MovieBlock {
         std::vector<std::string> times;
-        double price {};
+        double price{};
     };
     std::map<std::string, MovieBlock> listing;
 
-    for (const Showtime& s : shows)
-    {
+    for (const Showtime &s: shows) {
         auto it = idToTitle.find(s.movieId);
         if (it == idToTitle.end()) continue;
 
@@ -504,37 +460,33 @@ void Menu::listShowtimesMenu()
     }
 
     std::cout << std::endl;
-    for (const auto& [title, block] : listing)
-    {
+    for (const auto &[title, block]: listing) {
         std::cout << title << ": ";
 
-        for (std::size_t i = 0; i < block.times.size(); ++i)
-        {
+        for (std::size_t i = 0; i < block.times.size(); ++i) {
             std::cout << block.times[i];
             if (i + 1 < block.times.size()) std::cout << ", ";
         }
     }
 }
 
-void Menu::viewMoviesMenu()
-{
+void Menu::viewMoviesMenu() {
     std::vector<Cinema> cinemas = fetchAllCinemas();
-    if (cinemas.empty())
-    {
+    if (cinemas.empty()) {
         std::cout << "No cinemas available." << std::endl;
         return;
     }
-    for (const Cinema& c : cinemas)
+    for (const Cinema &c: cinemas)
         std::cout << c.id << " — " << c.name << std::endl;
 
-    int cinemaId {};
+    int cinemaId{};
     std::cout << "Cinema ID: ";
-    std::cin  >> cinemaId;
+    std::cin >> cinemaId;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    auto     now      = std::chrono::system_clock::now();
-    std::time_t tt    = std::chrono::system_clock::to_time_t(now);
-    std::tm     tmNow = *std::localtime(&tt);
+    auto now = std::chrono::system_clock::now();
+    std::time_t tt = std::chrono::system_clock::to_time_t(now);
+    std::tm tmNow = *std::localtime(&tt);
 
     std::ostringstream todayBuf;
     todayBuf << std::put_time(&tmNow, "%Y-%m-%d");
@@ -549,23 +501,23 @@ void Menu::viewMoviesMenu()
     std::string sql;
     if (dateFilter == today)
         sql =
-            "SELECT m.title, DATE_FORMAT(st.start_time,'%H:%i'), st.price "
-            "FROM   showtime st "
-            "JOIN   hall h   ON h.id = st.hall_id "
-            "JOIN   movie m  ON m.id = st.movie_id "
-            "WHERE  h.cinema_id = ? "
-            "AND    DATE(st.start_time) = CURDATE() "
-            "AND    st.start_time > NOW() "
-            "ORDER  BY st.start_time";
+                "SELECT m.title, DATE_FORMAT(st.start_time,'%H:%i'), st.price "
+                "FROM   showtime st "
+                "JOIN   hall h   ON h.id = st.hall_id "
+                "JOIN   movie m  ON m.id = st.movie_id "
+                "WHERE  h.cinema_id = ? "
+                "AND    DATE(st.start_time) = CURDATE() "
+                "AND    st.start_time > NOW() "
+                "ORDER  BY st.start_time";
     else
         sql =
-            "SELECT m.title, DATE_FORMAT(st.start_time,'%H:%i'), st.price "
-            "FROM   showtime st "
-            "JOIN   hall h   ON h.id = st.hall_id "
-            "JOIN   movie m  ON m.id = st.movie_id "
-            "WHERE  h.cinema_id = ? "
-            "AND    DATE(st.start_time) = ? "
-            "ORDER  BY st.start_time";
+                "SELECT m.title, DATE_FORMAT(st.start_time,'%H:%i'), st.price "
+                "FROM   showtime st "
+                "JOIN   hall h   ON h.id = st.hall_id "
+                "JOIN   movie m  ON m.id = st.movie_id "
+                "WHERE  h.cinema_id = ? "
+                "AND    DATE(st.start_time) = ? "
+                "ORDER  BY st.start_time";
 
     auto session = createSession();
     mysqlx::SqlStatement stmt = session->sql(sql);
@@ -573,58 +525,49 @@ void Menu::viewMoviesMenu()
     if (dateFilter != today) stmt.bind(dateFilter);
     auto res = stmt.execute();
 
-    std::map<std::string, std::pair<std::vector<std::string>, double>> block;
-    for (const mysqlx::Row& r : res)
-    {
+    std::map<std::string, std::pair<std::vector<std::string>, double> > block;
+    for (const mysqlx::Row &r: res) {
         std::string title = r[0].get<std::string>();
-        std::string time  = r[1].get<std::string>();
-        double      price = r[2].get<double>();
+        std::string time = r[1].get<std::string>();
+        double price = r[2].get<double>();
         block[title].first.push_back(time);
         block[title].second = price;
     }
 
-    if (block.empty())
-    {
+    if (block.empty()) {
         std::cout << "No upcoming showtimes for that day." << std::endl;
         return;
     }
 
     std::cout << std::endl;
-    for (const auto& [title, data] : block)
-    {
-        const std::vector<std::string>& times = data.first;
+    for (const auto &[title, data]: block) {
+        const std::vector<std::string> &times = data.first;
         std::cout << title << ": ";
-        for (std::size_t i = 0; i < times.size(); ++i)
-        {
+        for (std::size_t i = 0; i < times.size(); ++i) {
             std::cout << times[i];
             if (i + 1 < times.size()) std::cout << ", ";
         }
-        std::cout << std::endl
-                  << std::fixed << std::setprecision(2)
-                  << data.second << std::endl << std::endl;
+        std::cout << std::endl << std::fixed << std::setprecision(2) << data.second << std::endl << std::endl;
     }
 }
 
-void Menu::editCinemaMenu()
-{
+void Menu::editCinemaMenu() {
     listCinemasMenu();
-    int id {};
+    int id{};
     std::cout << "Cinema ID to edit: ";
-    std::cin  >> id;
+    std::cin >> id;
 
     std::vector<Cinema> cinemas = fetchAllCinemas();
-    auto it = std::find_if(cinemas.begin(), cinemas.end(),
-                           [id](const Cinema& c){ return c.id == id; });
-    if (it == cinemas.end())
-    {
+    auto it = std::find_if(cinemas.begin(), cinemas.end(), [id](const Cinema &c) { return c.id == id; });
+    if (it == cinemas.end()) {
         std::cout << "Cinema not found." << std::endl;
         return;
     }
 
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    std::string name  = it->name;
-    std::string city  = it->city;
+    std::string name = it->name;
+    std::string city = it->city;
     std::string input;
 
     std::cout << "New name  [" << name << "]: ";
@@ -641,31 +584,27 @@ void Menu::editCinemaMenu()
         std::cout << "Update failed." << std::endl;
 }
 
-void Menu::editHallMenu()
-{
+void Menu::editHallMenu() {
     listCinemasMenu();
-    int cinemaId {};
+    int cinemaId{};
     std::cout << "Cinema ID: ";
-    std::cin  >> cinemaId;
+    std::cin >> cinemaId;
 
     std::vector<Hall> halls = fetchHallsByCinema(cinemaId);
-    if (halls.empty())
-    {
+    if (halls.empty()) {
         std::cout << "No halls for that cinema." << std::endl;
         return;
     }
 
-    for (const Hall& h : halls)
+    for (const Hall &h: halls)
         std::cout << h.id << " — " << h.name << std::endl;
 
-    int id {};
+    int id{};
     std::cout << "Hall ID to edit: ";
-    std::cin  >> id;
+    std::cin >> id;
 
-    auto it = std::find_if(halls.begin(), halls.end(),
-                           [id](const Hall& h){ return h.id == id; });
-    if (it == halls.end())
-    {
+    auto it = std::find_if(halls.begin(), halls.end(), [id](const Hall &h) { return h.id == id; });
+    if (it == halls.end()) {
         std::cout << "Hall not found." << std::endl;
         return;
     }
@@ -674,7 +613,7 @@ void Menu::editHallMenu()
 
     std::string name = it->name, input;
     int seats = it->seatsPerRow;
-    int rows  = it->rowCount;
+    int rows = it->rowCount;
 
     std::cout << "New name [" << name << "]: ";
     std::getline(std::cin, input);
@@ -694,18 +633,16 @@ void Menu::editHallMenu()
         std::cout << "Update failed." << std::endl;
 }
 
-void Menu::editMovieMenu()
-{
+void Menu::editMovieMenu() {
     listMoviesMenu();
-    int id {};
+    int id{};
     std::cout << "Movie ID to edit: ";
-    std::cin  >> id;
+    std::cin >> id;
 
     std::vector<Movie> movies = fetchAllMovies();
     auto it = std::find_if(movies.begin(), movies.end(),
-                           [id](const Movie& m){ return m.id == id; });
-    if (it == movies.end())
-    {
+                           [id](const Movie &m) { return m.id == id; });
+    if (it == movies.end()) {
         std::cout << "Movie not found." << std::endl;
         return;
     }
@@ -713,11 +650,12 @@ void Menu::editMovieMenu()
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     std::string title = it->title;
-    std::string lang  = it->language;
+    std::string lang = it->language;
     std::string genre = it->genre;
-    std::string date  = it->releaseDate;
-    int         dur   = 0;
-    try { dur = std::stoi(it->releaseDate); } catch (...) {}
+    std::string date = it->releaseDate;
+    int dur = 0;
+    try { dur = std::stoi(it->releaseDate); } catch (...) {
+    }
 
     std::string input;
 
@@ -747,15 +685,13 @@ void Menu::editMovieMenu()
         std::cout << "Update failed." << std::endl;
 }
 
-void Menu::editShowtimeMenu()
-{
+void Menu::editShowtimeMenu() {
     std::vector<Cinema> cinemas = fetchAllCinemas();
-    if (cinemas.empty())
-    {
+    if (cinemas.empty()) {
         std::cout << "No cinemas." << std::endl;
         return;
     }
-    for (const Cinema& c : cinemas)
+    for (const Cinema &c: cinemas)
         std::cout << c.id << " — " << c.name << std::endl;
 
     int cinemaId{};
@@ -764,23 +700,19 @@ void Menu::editShowtimeMenu()
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     std::vector<Showtime> shows = fetchShowtimesByCinema(cinemaId);
-    if (shows.empty())
-    {
+    if (shows.empty()) {
         std::cout << "No showtimes for this cinema." << std::endl;
         return;
     }
 
     std::vector<Movie> movies = fetchAllMovies();
     std::unordered_map<int, std::string> idToTitle;
-    for (const Movie& m : movies) idToTitle[m.id] = m.title;
+    for (const Movie &m: movies) idToTitle[m.id] = m.title;
 
     std::cout << std::endl << "ID  Title            Time  " << std::endl;
     std::cout << "-----------------------------------" << std::endl;
-    for (const Showtime& s : shows)
-    {
-        std::cout << std::left << std::setw(4) << s.id
-                  << std::setw(16) << idToTitle[s.movieId]
-                  << std::setw(6) << s.startTime << std::endl;
+    for (const Showtime &s: shows) {
+        std::cout << std::left << std::setw(4) << s.id << std::setw(16) << idToTitle[s.movieId] << std::setw(6) << s.startTime << std::endl;
     }
 
     int id{};
@@ -790,12 +722,11 @@ void Menu::editShowtimeMenu()
 
     auto session = createSession();
     auto row = session->sql(
-                   "SELECT DATE_FORMAT(start_time,'%Y-%m-%d %H:%i'), "
-                   "FROM showtime WHERE id = ?")
-                   .bind(id).execute().fetchOne();
+                "SELECT DATE_FORMAT(start_time,'%Y-%m-%d %H:%i'), "
+                "FROM showtime WHERE id = ?")
+            .bind(id).execute().fetchOne();
 
-    if (!row)
-    {
+    if (!row) {
         std::cout << "Showtime not found." << std::endl;
         return;
     }
@@ -808,8 +739,7 @@ void Menu::editShowtimeMenu()
     std::getline(std::cin, input);
     if (!input.empty()) start = input;
 
-    std::cout << "New price [" << std::fixed << std::setprecision(2)
-              << price << "]: ";
+    std::cout << "New price [" << std::fixed << std::setprecision(2) << price << "]: ";
     std::getline(std::cin, input);
     if (!input.empty()) price = std::stod(input);
 
@@ -820,42 +750,45 @@ void Menu::editShowtimeMenu()
 }
 
 
-void Menu::deleteCinemaMenu()
-{
+void Menu::deleteCinemaMenu() {
     listCinemasMenu();
-    int id; std::cout << "Cinema ID to delete: "; std::cin >> id;
+    int id;
+    std::cout << "Cinema ID to delete: ";
+    std::cin >> id;
     if (deleteCinema(id)) std::cout << "Cinema deleted." << std::endl;
     else std::cout << "Delete failed." << std::endl;
 }
 
-void Menu::deleteHallMenu()
-{
-    int cinemaId; listCinemasMenu();
-    std::cout << "Cinema ID: "; std::cin >> cinemaId;
+void Menu::deleteHallMenu() {
+    int cinemaId;
+    listCinemasMenu();
+    std::cout << "Cinema ID: ";
+    std::cin >> cinemaId;
     std::vector<Hall> halls = fetchHallsByCinema(cinemaId);
-    for (const Hall& h : halls) std::cout << h.id << " — " << h.name << std::endl;
-    int id; std::cout << "Hall ID to delete: "; std::cin >> id;
+    for (const Hall &h: halls) std::cout << h.id << " — " << h.name << std::endl;
+    int id;
+    std::cout << "Hall ID to delete: ";
+    std::cin >> id;
     if (deleteHall(id)) std::cout << "Hall deleted." << std::endl;
     else std::cout << "Delete failed." << std::endl;
 }
 
-void Menu::deleteMovieMenu()
-{
+void Menu::deleteMovieMenu() {
     listMoviesMenu();
-    int id; std::cout << "Movie ID to delete: "; std::cin >> id;
+    int id;
+    std::cout << "Movie ID to delete: ";
+    std::cin >> id;
     if (deleteMovie(id)) std::cout << "Movie deleted." << std::endl;
     else std::cout << "Delete failed." << std::endl;
 }
 
-void Menu::deleteShowtimeMenu()
-{
+void Menu::deleteShowtimeMenu() {
     std::vector<Cinema> cinemas = fetchAllCinemas();
-    if (cinemas.empty())
-    {
+    if (cinemas.empty()) {
         std::cout << "No cinemas." << std::endl;
         return;
     }
-    for (const Cinema& c : cinemas)
+    for (const Cinema &c: cinemas)
         std::cout << c.id << " — " << c.name << std::endl;
 
     int cinemaId{};
@@ -864,24 +797,19 @@ void Menu::deleteShowtimeMenu()
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     std::vector<Showtime> shows = fetchShowtimesByCinema(cinemaId);
-    if (shows.empty())
-    {
+    if (shows.empty()) {
         std::cout << "No showtimes for this cinema." << std::endl;
         return;
     }
 
     std::vector<Movie> movies = fetchAllMovies();
     std::unordered_map<int, std::string> idToTitle;
-    for (const Movie& m : movies) idToTitle[m.id] = m.title;
+    for (const Movie &m: movies) idToTitle[m.id] = m.title;
 
     std::cout << std::endl << "ID  Title            Time" << std::endl;
     std::cout << "------------------------------------" << std::endl;
-    for (const Showtime& s : shows)
-    {
-        std::cout << std::left << std::setw(4) << s.id
-                  << std::setw(16) << idToTitle[s.movieId]
-                  << std::setw(6) << s.startTime
-                  << std::endl;
+    for (const Showtime &s: shows) {
+        std::cout << std::left << std::setw(4) << s.id << std::setw(16) << idToTitle[s.movieId] << std::setw(6) << s.startTime << std::endl;
     }
 
     int id{};
@@ -894,24 +822,22 @@ void Menu::deleteShowtimeMenu()
         std::cout << "Delete failed." << std::endl;
 }
 
-void Menu::browseAndReserve(const User& user)
-{
+void Menu::browseAndReserve(const User &user) {
     std::vector<Cinema> cinemas = fetchAllCinemas();
-    if (cinemas.empty())
-    {
+    if (cinemas.empty()) {
         std::cout << "No cinemas." << std::endl;
         return;
     }
-    for (const Cinema& c : cinemas)
+    for (const Cinema &c: cinemas)
         std::cout << c.id << " — " << c.name << std::endl;
 
-    int cinemaId {};
+    int cinemaId{};
     std::cout << "Cinema ID: ";
-    std::cin  >> cinemaId;
+    std::cin >> cinemaId;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    auto   now = std::chrono::system_clock::now();
-    time_t tt  = std::chrono::system_clock::to_time_t(now);
+    auto now = std::chrono::system_clock::now();
+    time_t tt = std::chrono::system_clock::to_time_t(now);
     std::tm tm = *std::localtime(&tt);
     std::ostringstream buf;
     buf << std::put_time(&tm, "%Y-%m-%d");
@@ -924,52 +850,44 @@ void Menu::browseAndReserve(const User& user)
 
     auto session = createSession();
     std::string sql =
-        "SELECT st.id, m.title, DATE_FORMAT(st.start_time,'%H:%i'), st.price "
-        "FROM showtime st "
-        "JOIN movie m ON m.id = st.movie_id "
-        "JOIN hall  h ON h.id = st.hall_id "
-        "WHERE h.cinema_id = ? AND DATE(st.start_time) = ? ";
+            "SELECT st.id, m.title, DATE_FORMAT(st.start_time,'%H:%i'), st.price "
+            "FROM showtime st "
+            "JOIN movie m ON m.id = st.movie_id "
+            "JOIN hall  h ON h.id = st.hall_id "
+            "WHERE h.cinema_id = ? AND DATE(st.start_time) = ? ";
     if (date == today) sql += "AND st.start_time > NOW() ";
     sql += "ORDER BY m.title, st.start_time";
 
     auto res = session->sql(sql).bind(cinemaId).bind(date).execute();
-    if (res.count() == 0)
-    {
+    if (res.count() == 0) {
         std::cout << "No upcoming shows on that day." << std::endl;
         return;
     }
 
     std::cout << "\nID  Title            Time \n"
-              << "-----------------------------------\n";
-    for (const mysqlx::Row& r : res)
-    {
-        std::cout << std::left << std::setw(4)  << r[0].get<int>()
-                  << std::setw(16) << r[1].get<std::string>()
-                  << std::setw(6)  << r[2].get<std::string>()
-                  << std::endl;
+            << "-----------------------------------\n";
+    for (const mysqlx::Row &r: res) {
+        std::cout << std::left << std::setw(4) << r[0].get<int>() << std::setw(16) << r[1].get<std::string>() << std::setw(6) << r[2].get<std::string>() << std::endl;
     }
 
-    int showId {};
+    int showId{};
     std::cout << "\nShowtime ID: ";
-    std::cin  >> showId;
+    std::cin >> showId;
 
     std::vector<Seat> seats = fetchSeatsForShow(showId);
-    if (seats.empty())
-    {
+    if (seats.empty()) {
         std::cout << "Seat map unavailable." << std::endl;
         return;
     }
 
     int maxR = 0, maxC = 0;
-    for (const Seat& s : seats)
-    {
+    for (const Seat &s: seats) {
         maxR = std::max(maxR, s.row);
         maxC = std::max(maxC, s.col);
     }
 
     std::unordered_map<std::string, int> codeToId;
-    for (const Seat& s : seats)
-    {
+    for (const Seat &s: seats) {
         char rowL = 'A' + static_cast<char>(s.row - 1);
         std::ostringstream oss;
         oss << rowL << s.col;
@@ -984,21 +902,17 @@ void Menu::browseAndReserve(const User& user)
         std::cout << std::setw(cellW) << c;
     std::cout << '\n';
 
-    for (int r = 1; r <= maxR; ++r)
-    {
+    for (int r = 1; r <= maxR; ++r) {
         char rowL = 'A' + static_cast<char>(r - 1);
         std::cout << rowL << " |  ";
-        for (int c = 1; c <= maxC; ++c)
-        {
+        for (int c = 1; c <= maxC; ++c) {
             auto it = std::find_if(
                 seats.begin(), seats.end(),
-                [r,c](const Seat& s){ return s.row == r && s.col == c; });
+                [r,c](const Seat &s) { return s.row == r && s.col == c; });
 
             char ch = ' ';
-            if (it != seats.end())
-            {
-                ch = (it->type == "silver") ? 'S' :
-                     (it->type == "gold")   ? 'G' : 'P';
+            if (it != seats.end()) {
+                ch = (it->type == "silver") ? 'S' : (it->type == "gold") ? 'G' : 'P';
                 if (it->taken) ch = 'X';
             }
             std::cout << std::setw(cellW) << ch;
@@ -1009,28 +923,24 @@ void Menu::browseAndReserve(const User& user)
     std::cout << "\nEnter seat codes (e.g. A5 B6 C7) or 0 to cancel: ";
     std::vector<int> chosen;
     std::string code;
-    while (std::cin >> code && code != "0")
-    {
+    while (std::cin >> code && code != "0") {
         auto it = codeToId.find(code);
-        if (it == codeToId.end())
-        {
+        if (it == codeToId.end()) {
             std::cout << "Seat " << code << " does not exist. Try again: ";
             continue;
         }
         chosen.push_back(it->second);
     }
-    if (chosen.empty())
-    {
+    if (chosen.empty()) {
         std::cout << "No seats selected." << std::endl;
         return;
     }
 
-    bool payNow {};
+    bool payNow{};
     std::cout << "Pay now? (1 = yes 0 = reserve): ";
-    std::cin  >> payNow;
+    std::cin >> payNow;
 
-    if (payNow)
-    {
+    if (payNow) {
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         std::string holder, cardNo, exp, cvv;
@@ -1053,4 +963,32 @@ void Menu::browseAndReserve(const User& user)
         std::cout << "Booking successful.\n";
     else
         std::cout << "Booking failed (seats may already be taken).\n";
+}
+
+
+void Menu::searchMoviesMenu() {
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    std::string t, l, g, d;
+    std::cout << "\n— Leave any field blank to skip —\n";
+    std::cout << "Title contains   : ";
+    std::getline(std::cin, t);
+    std::cout << "Language contains: ";
+    std::getline(std::cin, l);
+    std::cout << "Genre contains   : ";
+    std::getline(std::cin, g);
+    std::cout << "Release date (YYYY-MM-DD exact match): ";
+    std::getline(std::cin, d);
+
+    auto hits = searchMovies(t, l, g, d);
+    if (hits.empty()) {
+        std::cout << "\nNo matches.\n";
+        pause();
+        return;
+    }
+
+    std::cout << "\nMatches:\n";
+    for (auto &m: hits)
+        std::cout << m.id << "  " << m.title << "  (" << m.language << ", " << m.genre << ", " << m.releaseDate << ")\n";
+    pause();
 }
